@@ -1,3 +1,4 @@
+import UIKit
 import SwiftUI
 
 struct ReminderView: View {
@@ -5,6 +6,31 @@ struct ReminderView: View {
 
     var body: some View {
         List {
+            Section {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(L10n.tr("reminder_notification_status_title"))
+                        .font(.headline)
+                    Text(L10n.tr(viewModel.notificationStatusKey))
+                        .foregroundStyle(.secondary)
+                    if viewModel.notificationStatusKey == "reminder_notification_status_denied" {
+                        Button(L10n.tr("reminder_notification_open_settings")) {
+                            if let url = URL(string: UIApplication.openSettingsURLString) {
+                                UIApplication.shared.open(url)
+                            }
+                        }
+                    } else if viewModel.notificationStatusKey == "reminder_notification_status_not_determined"
+                                || viewModel.notificationStatusKey == "reminder_notification_status_unknown" {
+                        Button(L10n.tr("reminder_notification_request")) {
+                            viewModel.requestNotificationAuthorization()
+                        }
+                    }
+                    Text(L10n.tr(viewModel.notificationStatusHelpKey))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.vertical, 4)
+            }
+
             if viewModel.reminders.isEmpty {
                 ContentUnavailableView(
                     L10n.tr("reminder_empty_title"),

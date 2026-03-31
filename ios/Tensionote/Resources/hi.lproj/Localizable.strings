@@ -42,6 +42,17 @@
 "reminder_add" = "जोड़ें";
 "reminder_empty_title" = "अभी कोई रिमाइंडर नहीं है";
 "reminder_empty_body" = "रिमाइंडर जोड़ें ताकि रक्तचाप मापने के समय आपको सूचना मिले।";
+"reminder_notification_status_title" = "सूचना स्थिति";
+"reminder_notification_status_enabled" = "सूचनाएँ सक्षम हैं।";
+"reminder_notification_status_denied" = "सूचनाएँ बंद हैं। रिमाइंडर पाने के लिए उन्हें सेटिंग्स में सक्षम करें।";
+"reminder_notification_status_not_determined" = "सूचनाएँ अभी अनुरोधित नहीं की गई हैं।";
+"reminder_notification_status_unknown" = "सूचना स्थिति उपलब्ध नहीं है।";
+"reminder_notification_status_help_enabled" = "सूचनाएँ तैयार हैं। आप बाद में सेटिंग्स में बदल सकते हैं।";
+"reminder_notification_status_help_denied" = "रिमाइंडर की अनुमति देने के लिए सेटिंग्स खोलें।";
+"reminder_notification_status_help_not_determined" = "रक्तचाप रिमाइंडर पाने के लिए सूचनाएँ सक्षम करें।";
+"reminder_notification_status_help_unknown" = "आप सूचनाओं की अनुमति फिर से अनुरोधित कर सकते हैं।";
+"reminder_notification_request" = "सूचनाएँ सक्षम करें";
+"reminder_notification_open_settings" = "सेटिंग्स खोलें";
 "reminder_notification_title" = "रक्तचाप रिमाइंडर";
 "reminder_notification_body" = "अब अपना रक्तचाप दर्ज करने का समय है।";
 
@@ -50,10 +61,14 @@
 "report_range_14_days" = "14 दिन";
 "report_range_30_days" = "30 दिन";
 "report_range_custom" = "कस्टम अवधि";
+"report_range_format_days" = "%d दिन";
 "report_custom_from" = "प्रारंभ तिथि";
 "report_custom_to" = "समाप्ति तिथि";
 "report_empty_title" = "इस अवधि में कोई रिकॉर्ड नहीं है";
 "report_empty_body" = "समय सीमा बदलें या और रक्तचाप रिकॉर्ड जोड़ें।";
+"report_export_error_title" = "रिपोर्ट निर्यात";
+"report_export_empty" = "चयनित अवधि में कोई रिकॉर्ड नहीं है।";
+"report_export_failed" = "रिपोर्ट निर्यात नहीं हो सकी। कृपया फिर कोशिश करें।";
 "report_summary_title" = "सारांश";
 "report_recent_records_title" = "हाल के रिकॉर्ड";
 "report_metric_count" = "रिकॉर्ड संख्या";
@@ -75,6 +90,7 @@
 "settings_language_en" = "अंग्रेज़ी";
 "settings_language_hi" = "हिंदी";
 "settings_documents_title" = "दस्तावेज़";
+"settings_documents_description" = "गोपनीयता नीति, सेवा की शर्तें और अस्वीकरण देखें।";
 "settings_privacy_policy" = "गोपनीयता नीति";
 "settings_terms" = "सेवा की शर्तें";
 "settings_disclaimer" = "अस्वीकरण";
@@ -87,6 +103,7 @@
 "chart_axis_diastolic" = "डायस्टोलिक";
 "trend_summary_normal" = "हाल के सभी रिकॉर्ड सामान्य सीमा में हैं।";
 "trend_summary_counts" = "चयनित प्रवृत्ति में सिस्टोलिक %d बार और डायस्टोलिक %d बार ऊँचा था।";
+"trend_chart_legend" = "लाल रेखा सिस्टोलिक ऊँचे स्तर की सीमा दिखाती है, नारंगी रेखा डायस्टोलिक ऊँचे स्तर की सीमा दिखाती है।";
 
 "tag_morning" = "सुबह";
 "tag_afternoon" = "दोपहर";

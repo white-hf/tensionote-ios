@@ -80,6 +80,17 @@ final class HomeViewModel: ObservableObject {
         draftStatus ?? selectedStatus
     }
 
+    var canSaveQuickRecord: Bool {
+        guard
+            let systolic = Int(systolicInput),
+            let diastolic = Int(diastolicInput),
+            let heartRate = Int(heartRateInput)
+        else {
+            return false
+        }
+        return validator.isValid(systolic: systolic, diastolic: diastolic, heartRate: heartRate)
+    }
+
     var repositoryPublisher: AnyPublisher<[BloodPressureRecord], Never> {
         if let observableRepository = repository as? InMemoryBloodPressureRepository {
             return observableRepository.$records.eraseToAnyPublisher()

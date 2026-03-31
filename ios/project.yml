@@ -13,10 +13,16 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.tensionote.app
         SWIFT_VERSION: 5.10
         INFOPLIST_FILE: Tensionote/Info.plist
+    resources:
+      - Tensionote/Resources
     info:
       path: Tensionote/Info.plist
       properties:
         CFBundleDisplayName: Tensionote
+        CFBundleLocalizations:
+          - en
+          - zh-Hans
+          - hi
         UILaunchScreen: {}
         UIApplicationSceneManifest:
           UIApplicationSupportsMultipleScenes: false

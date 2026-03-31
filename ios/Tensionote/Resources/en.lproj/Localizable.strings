@@ -42,6 +42,17 @@
 "reminder_add" = "Add";
 "reminder_empty_title" = "No reminders yet";
 "reminder_empty_body" = "Add a reminder to get notified when it is time to measure your blood pressure.";
+"reminder_notification_status_title" = "Notification Status";
+"reminder_notification_status_enabled" = "Notifications are enabled.";
+"reminder_notification_status_denied" = "Notifications are blocked. Enable them in Settings to receive reminders.";
+"reminder_notification_status_not_determined" = "Notifications have not been requested yet.";
+"reminder_notification_status_unknown" = "Notification status is unavailable.";
+"reminder_notification_status_help_enabled" = "Notifications are ready. You can still change them later in Settings.";
+"reminder_notification_status_help_denied" = "Open Settings to allow reminders.";
+"reminder_notification_status_help_not_determined" = "Enable notifications to receive blood pressure reminders.";
+"reminder_notification_status_help_unknown" = "You can request notification access again.";
+"reminder_notification_request" = "Enable Notifications";
+"reminder_notification_open_settings" = "Open Settings";
 "reminder_notification_title" = "Blood Pressure Reminder";
 "reminder_notification_body" = "It is time to record your blood pressure.";
 
@@ -50,10 +61,14 @@
 "report_range_14_days" = "14 Days";
 "report_range_30_days" = "30 Days";
 "report_range_custom" = "Custom Range";
+"report_range_format_days" = "%d Days";
 "report_custom_from" = "From";
 "report_custom_to" = "To";
 "report_empty_title" = "No records in this range";
 "report_empty_body" = "Change the range or add more blood pressure records.";
+"report_export_error_title" = "Report Export";
+"report_export_empty" = "There are no records in the selected range.";
+"report_export_failed" = "Unable to export the report. Please try again.";
 "report_summary_title" = "Summary";
 "report_recent_records_title" = "Recent Records";
 "report_metric_count" = "Record Count";
@@ -75,6 +90,7 @@
 "settings_language_en" = "English";
 "settings_language_hi" = "Hindi";
 "settings_documents_title" = "Documents";
+"settings_documents_description" = "Open the privacy policy, terms of service, and disclaimer.";
 "settings_privacy_policy" = "Privacy Policy";
 "settings_terms" = "Terms of Service";
 "settings_disclaimer" = "Disclaimer";
@@ -87,6 +103,7 @@
 "chart_axis_diastolic" = "Diastolic";
 "trend_summary_normal" = "Recent records are all within the common normal range.";
 "trend_summary_counts" = "In the selected trend, systolic was high %d times and diastolic was high %d times.";
+"trend_chart_legend" = "Red line: systolic high threshold. Orange line: diastolic high threshold.";
 
 "tag_morning" = "Morning";
 "tag_afternoon" = "Afternoon";

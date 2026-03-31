@@ -42,6 +42,17 @@
 "reminder_add" = "新增";
 "reminder_empty_title" = "还没有提醒";
 "reminder_empty_body" = "添加提醒后，你会在该测量血压时收到通知。";
+"reminder_notification_status_title" = "通知状态";
+"reminder_notification_status_enabled" = "通知已开启。";
+"reminder_notification_status_denied" = "通知已被关闭。请到系统设置中开启提醒。";
+"reminder_notification_status_not_determined" = "尚未请求通知权限。";
+"reminder_notification_status_unknown" = "无法获取通知状态。";
+"reminder_notification_status_help_enabled" = "通知已准备好，你也可以稍后在系统设置中修改。";
+"reminder_notification_status_help_denied" = "请前往系统设置允许提醒通知。";
+"reminder_notification_status_help_not_determined" = "开启通知后，你才能收到血压提醒。";
+"reminder_notification_status_help_unknown" = "你可以再次请求通知权限。";
+"reminder_notification_request" = "开启通知";
+"reminder_notification_open_settings" = "打开设置";
 "reminder_notification_title" = "血压测量提醒";
 "reminder_notification_body" = "该记录你的血压了。";
 
@@ -50,10 +61,14 @@
 "report_range_14_days" = "14 天";
 "report_range_30_days" = "30 天";
 "report_range_custom" = "自定义范围";
+"report_range_format_days" = "%d 天";
 "report_custom_from" = "开始日期";
 "report_custom_to" = "结束日期";
 "report_empty_title" = "当前范围内没有记录";
 "report_empty_body" = "请调整时间范围或继续添加血压记录。";
+"report_export_error_title" = "报告导出";
+"report_export_empty" = "当前选定范围内没有记录。";
+"report_export_failed" = "无法导出报告，请重试。";
 "report_summary_title" = "摘要";
 "report_recent_records_title" = "最近记录";
 "report_metric_count" = "记录数";
@@ -75,6 +90,7 @@
 "settings_language_en" = "英文";
 "settings_language_hi" = "印地语";
 "settings_documents_title" = "文档";
+"settings_documents_description" = "查看隐私政策、用户协议和免责声明。";
 "settings_privacy_policy" = "隐私政策";
 "settings_terms" = "用户协议";
 "settings_disclaimer" = "免责声明";
@@ -87,6 +103,7 @@
 "chart_axis_diastolic" = "舒张压";
 "trend_summary_normal" = "最近记录都处于常见正常范围。";
 "trend_summary_counts" = "当前趋势中，收缩压偏高 %d 次，舒张压偏高 %d 次。";
+"trend_chart_legend" = "红线表示收缩压偏高阈值，橙线表示舒张压偏高阈值。";
 
 "tag_morning" = "晨起";
 "tag_afternoon" = "午后";

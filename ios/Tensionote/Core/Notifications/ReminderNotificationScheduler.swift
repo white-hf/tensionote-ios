@@ -2,8 +2,16 @@ import Foundation
 import UserNotifications
 
 final class ReminderNotificationScheduler {
-    func requestAuthorization() {
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { _, _ in }
+    func requestAuthorization(completion: ((Bool) -> Void)? = nil) {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, _ in
+            completion?(granted)
+        }
+    }
+
+    func fetchAuthorizationStatus(completion: @escaping (UNAuthorizationStatus) -> Void) {
+        UNUserNotificationCenter.current().getNotificationSettings { settings in
+            completion(settings.authorizationStatus)
+        }
     }
 
     func sync(reminders: [ReminderItem]) {

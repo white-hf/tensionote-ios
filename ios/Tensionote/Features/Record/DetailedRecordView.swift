@@ -129,6 +129,7 @@ struct DetailedRecordView: View {
                     saveRecord()
                 }
             }
+            .disabled(!canSaveRecord)
         }
         .navigationTitle(L10n.tr("home_detailed_entry_button"))
     }
@@ -173,5 +174,16 @@ struct DetailedRecordView: View {
 
     private var orderedSelectedTags: [String] {
         tagKeys.filter { selectedTags.contains($0) }
+    }
+
+    private var canSaveRecord: Bool {
+        guard
+            let systolicValue = Int(systolic),
+            let diastolicValue = Int(diastolic),
+            let heartRateValue = Int(heartRate)
+        else {
+            return false
+        }
+        return validator.isValid(systolic: systolicValue, diastolic: diastolicValue, heartRate: heartRateValue)
     }
 }

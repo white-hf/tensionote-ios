@@ -6,7 +6,7 @@ struct PDFReportExporter {
             return nil
         }
 
-        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("tensionote-report-\(days).pdf")
+        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("tensionote-report-\(days)-\(UUID().uuidString).pdf")
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 595, height: 842))
 
         do {
@@ -20,7 +20,7 @@ struct PDFReportExporter {
                 ]
 
                 NSString(string: L10n.tr("pdf_report_title")).draw(at: CGPoint(x: 32, y: 32), withAttributes: titleAttributes)
-                NSString(string: "\(L10n.tr("pdf_report_range_label")): \(days)").draw(at: CGPoint(x: 32, y: 70), withAttributes: bodyAttributes)
+                NSString(string: "\(L10n.tr("pdf_report_range_label")): \(L10n.format("report_range_format_days", days))").draw(at: CGPoint(x: 32, y: 70), withAttributes: bodyAttributes)
                 NSString(string: "\(L10n.tr("report_metric_count")): \(summary.count)").draw(at: CGPoint(x: 32, y: 95), withAttributes: bodyAttributes)
                 NSString(string: "\(L10n.tr("pdf_report_average_label")): \(summary.averageSystolic) / \(summary.averageDiastolic)").draw(at: CGPoint(x: 32, y: 120), withAttributes: bodyAttributes)
                 NSString(string: "\(L10n.tr("report_metric_average_heart_rate")): \(summary.averageHeartRate)").draw(at: CGPoint(x: 32, y: 145), withAttributes: bodyAttributes)

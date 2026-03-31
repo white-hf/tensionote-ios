@@ -49,6 +49,8 @@ struct SettingsView: View {
                         bodyKey: "document_disclaimer_content"
                     )
                 }
+            } footer: {
+                Text(L10n.tr("settings_documents_description"))
             }
         }
         .navigationTitle(L10n.tr("tab_settings"))

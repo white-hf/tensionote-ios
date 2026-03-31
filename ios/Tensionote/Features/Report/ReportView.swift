@@ -6,6 +6,13 @@ struct ReportView: View {
     @StateObject private var viewModel: ReportViewModel
     @State private var showShareSheet = false
     @State private var showMailComposer = false
+    @State private var exportAlert: ExportAlert?
+
+    struct ExportAlert: Identifiable {
+        let id = UUID()
+        let title: String
+        let message: String
+    }
 
     init(repository: InMemoryBloodPressureRepository) {
         self.repository = repository
@@ -26,11 +33,19 @@ struct ReportView: View {
                 .pickerStyle(.segmented)
 
                 if viewModel.isCustomRange {
+                    Text(viewModel.rangeDisplayText)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
                     Button(L10n.tr("report_range_custom")) {
                         viewModel.enableCustomRange()
                     }
                     .buttonStyle(.borderedProminent)
                 } else {
+                    Text(viewModel.rangeDisplayText)
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+
                     Button(L10n.tr("report_range_custom")) {
                         viewModel.enableCustomRange()
                     }
@@ -95,16 +110,20 @@ struct ReportView: View {
             Section {
                 Button(L10n.tr("report_export_pdf")) {
                     viewModel.exportPDF()
+                    handleExportState()
                 }
                 .disabled(viewModel.records.isEmpty)
                 Button(L10n.tr("report_share_email")) {
                     if viewModel.exportedFileURL == nil {
                         viewModel.exportPDF()
+                        handleExportState()
                     }
-                    if MFMailComposeViewController.canSendMail() {
+                    if MFMailComposeViewController.canSendMail(), viewModel.exportedFileURL != nil {
                         showMailComposer = viewModel.exportedFileURL != nil
-                    } else {
+                    } else if viewModel.exportedFileURL != nil {
                         showShareSheet = viewModel.exportedFileURL != nil
+                    } else {
+                        handleExportState()
                     }
                 }
                 .disabled(viewModel.records.isEmpty)
@@ -142,6 +161,13 @@ struct ReportView: View {
                 )
             }
         }
+        .alert(item: $exportAlert) { payload in
+            Alert(
+                title: Text(payload.title),
+                message: Text(payload.message),
+                dismissButton: .default(Text(L10n.tr("common_back")))
+            )
+        }
     }
 
     private func reportRow(titleKey: String, value: String) -> some View {
@@ -164,6 +190,16 @@ struct ReportView: View {
             return .red.opacity(0.85)
         case .variability:
             return .purple
+        }
+    }
+
+    private func handleExportState() {
+        if let key = viewModel.exportStatusMessageKey {
+            exportAlert = ExportAlert(
+                title: L10n.tr("report_export_error_title"),
+                message: L10n.tr(key)
+            )
+            viewModel.clearExportMessage()
         }
     }
 }

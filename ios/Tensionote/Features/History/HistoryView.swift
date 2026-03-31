@@ -5,7 +5,7 @@ struct HistoryView: View {
 
     var body: some View {
         Group {
-            if repository.fetchAll().isEmpty {
+            if records.isEmpty {
                 ContentUnavailableView(
                     L10n.tr("history_empty_title"),
                     systemImage: "list.bullet.rectangle",
@@ -13,43 +13,83 @@ struct HistoryView: View {
                 )
             } else {
                 List {
-                    ForEach(repository.fetchAll()) { record in
+                    ForEach(records) { record in
                         NavigationLink {
                             RecordDetailView(record: record, onDelete: nil, repository: repository)
                         } label: {
-                            VStack(alignment: .leading, spacing: 8) {
-                                Text(record.measuredAt.formatted(date: .abbreviated, time: .shortened))
-                                    .font(.subheadline)
-                                    .foregroundStyle(.secondary)
-
-                                HStack(alignment: .firstTextBaseline) {
-                                    Text("\(record.systolic)/\(record.diastolic)")
-                                        .font(.headline)
-                                    Spacer()
-                                    Text(L10n.tr(record.status.localizationKey))
-                                        .font(.subheadline)
-                                        .foregroundStyle(statusColor(for: record.status))
-                                }
-
-                                HStack {
-                                    Text(L10n.tr("metric_heart_rate"))
-                                    Spacer()
-                                    Text("\(record.heartRate)")
-                                }
-                                .font(.footnote)
-                                .foregroundStyle(.secondary)
-                            }
-                            .padding(.vertical, 6)
+                            recordRow(record)
                         }
                     }
                     .onDelete { offsets in
-                        let currentRecords = repository.fetchAll()
+                        let currentRecords = records
                         offsets.map { currentRecords[$0].id }.forEach(repository.deleteRecord)
                     }
                 }
             }
         }
         .navigationTitle(L10n.tr("history_title"))
+    }
+
+    private var records: [BloodPressureRecord] {
+        repository.fetchAll()
+    }
+
+    private func recordRow(_ record: BloodPressureRecord) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(record.measuredAt.formatted(date: .abbreviated, time: .shortened))
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.85)
+
+            ViewThatFits(in: .horizontal) {
+                HStack(alignment: .firstTextBaseline, spacing: 12) {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("\(record.systolic)/\(record.diastolic)")
+                            .font(.headline)
+                            .lineLimit(1)
+                            .minimumScaleFactor(0.9)
+                        HStack(alignment: .firstTextBaseline, spacing: 6) {
+                            Text(L10n.tr("metric_heart_rate"))
+                            Text("\(record.heartRate)")
+                        }
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    }
+
+                    Spacer(minLength: 8)
+
+                    Text(L10n.tr(record.status.localizationKey))
+                        .font(.subheadline)
+                        .foregroundStyle(statusColor(for: record.status))
+                        .multilineTextAlignment(.trailing)
+                        .fixedSize(horizontal: false, vertical: true)
+                        .minimumScaleFactor(0.85)
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("\(record.systolic)/\(record.diastolic)")
+                        .font(.headline)
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.9)
+                    Text(L10n.tr(record.status.localizationKey))
+                        .font(.subheadline)
+                        .foregroundStyle(statusColor(for: record.status))
+                        .fixedSize(horizontal: false, vertical: true)
+                        .minimumScaleFactor(0.85)
+                    HStack(alignment: .firstTextBaseline, spacing: 6) {
+                        Text(L10n.tr("metric_heart_rate"))
+                        Text("\(record.heartRate)")
+                    }
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.85)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.vertical, 6)
     }
 
     private func statusColor(for status: BloodPressureStatus) -> Color {

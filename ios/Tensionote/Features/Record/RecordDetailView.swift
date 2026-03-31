@@ -87,12 +87,30 @@ struct RecordDetailView: View {
     }
 
     private func detailRow(titleKey: String, value: String) -> some View {
-        HStack(alignment: .top) {
-            Text(L10n.tr(titleKey))
-            Spacer()
-            Text(value)
-                .multilineTextAlignment(.trailing)
-                .foregroundStyle(.secondary)
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .top, spacing: 12) {
+                Text(L10n.tr(titleKey))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                Text(value)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundStyle(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.85)
+            }
+
+            VStack(alignment: .leading, spacing: 4) {
+                Text(L10n.tr(titleKey))
+                    .lineLimit(2)
+                    .minimumScaleFactor(0.85)
+                Text(value)
+                    .multilineTextAlignment(.leading)
+                    .foregroundStyle(.secondary)
+                    .fixedSize(horizontal: false, vertical: true)
+                    .minimumScaleFactor(0.85)
+            }
         }
     }
 }

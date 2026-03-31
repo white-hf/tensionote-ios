@@ -67,6 +67,7 @@ struct HomeView: View {
                     .padding(.vertical, 14)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(!viewModel.canSaveQuickRecord)
 
             if let validationMessageKey = viewModel.validationMessageKey {
                 Text(L10n.tr(validationMessageKey))
@@ -100,13 +101,10 @@ struct HomeView: View {
                     .foregroundStyle(.secondary)
             } else {
                 Chart(viewModel.trendRecords) { record in
-                    RectangleMark(
-                        xStart: .value(L10n.tr("chart_axis_date"), viewModel.trendRecords.first?.measuredAt ?? .now),
-                        xEnd: .value(L10n.tr("chart_axis_date"), viewModel.trendRecords.last?.measuredAt ?? .now),
-                        yStart: .value(L10n.tr("chart_axis_diastolic"), 60),
-                        yEnd: .value(L10n.tr("chart_axis_systolic"), 120)
-                    )
-                    .foregroundStyle(.green.opacity(0.08))
+                    RuleMark(y: .value(L10n.tr("chart_axis_systolic"), 140))
+                        .foregroundStyle(.red.opacity(0.25))
+                    RuleMark(y: .value(L10n.tr("chart_axis_diastolic"), 90))
+                        .foregroundStyle(.orange.opacity(0.25))
 
                     LineMark(
                         x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
@@ -125,12 +123,22 @@ struct HomeView: View {
                         y: .value(L10n.tr("chart_axis_systolic"), record.systolic)
                     )
                     .foregroundStyle(pointColor(for: record.status))
+
+                    PointMark(
+                        x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
+                        y: .value(L10n.tr("chart_axis_diastolic"), record.diastolic)
+                    )
+                    .foregroundStyle(pointColor(for: record.status))
                 }
                 .frame(height: 220)
 
                 Text(L10n.tr(viewModel.displayStatus.localizationKey))
                     .font(.headline)
                     .foregroundStyle(.primary)
+
+                Text(L10n.tr("trend_chart_legend"))
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
 
                 Text(trendSummaryText)
                     .font(.subheadline)

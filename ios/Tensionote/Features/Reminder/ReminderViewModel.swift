@@ -1,8 +1,11 @@
 import Foundation
+import UserNotifications
 
 @MainActor
 final class ReminderViewModel: ObservableObject {
     @Published private(set) var reminders: [ReminderItem] = []
+    @Published private(set) var notificationStatusKey = "reminder_notification_status_unknown"
+    @Published private(set) var notificationStatusHelpKey = "reminder_notification_status_help_unknown"
     private let fileURL: URL
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
@@ -12,9 +15,9 @@ final class ReminderViewModel: ObservableObject {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
             ?? URL(fileURLWithPath: NSTemporaryDirectory())
         fileURL = documentsDirectory.appendingPathComponent("tensionote_reminders.json")
-        scheduler.requestAuthorization()
         load()
         scheduler.sync(reminders: reminders)
+        refreshAuthorizationStatus()
     }
 
     func addReminder() {
@@ -22,6 +25,7 @@ final class ReminderViewModel: ObservableObject {
         sortReminders()
         persist()
         scheduler.sync(reminders: reminders)
+        refreshAuthorizationStatus()
     }
 
     func toggleReminder(_ id: UUID) {
@@ -29,6 +33,7 @@ final class ReminderViewModel: ObservableObject {
         reminders[index].enabled.toggle()
         persist()
         scheduler.sync(reminders: reminders)
+        refreshAuthorizationStatus()
     }
 
     func updateReminder(_ id: UUID, hour: Int, minute: Int) {
@@ -38,18 +43,38 @@ final class ReminderViewModel: ObservableObject {
         sortReminders()
         persist()
         scheduler.sync(reminders: reminders)
+        refreshAuthorizationStatus()
     }
 
     func deleteReminder(at offsets: IndexSet) {
         reminders.remove(atOffsets: offsets)
         persist()
         scheduler.sync(reminders: reminders)
+        refreshAuthorizationStatus()
     }
 
     func deleteReminder(_ id: UUID) {
         reminders.removeAll { $0.id == id }
         persist()
         scheduler.sync(reminders: reminders)
+        refreshAuthorizationStatus()
+    }
+
+    func requestNotificationAuthorization() {
+        scheduler.requestAuthorization { [weak self] _ in
+            Task { @MainActor in
+                self?.refreshAuthorizationStatus()
+            }
+        }
+    }
+
+    private func refreshAuthorizationStatus() {
+        scheduler.fetchAuthorizationStatus { [weak self] status in
+            Task { @MainActor in
+                self?.notificationStatusKey = status.localizationKey
+                self?.notificationStatusHelpKey = status.helpLocalizationKey
+            }
+        }
     }
 
     private func load() {
@@ -75,6 +100,34 @@ final class ReminderViewModel: ObservableObject {
                 return $0.minute < $1.minute
             }
             return $0.hour < $1.hour
+        }
+    }
+}
+
+private extension UNAuthorizationStatus {
+    var localizationKey: String {
+        switch self {
+        case .authorized, .provisional, .ephemeral:
+            return "reminder_notification_status_enabled"
+        case .denied:
+            return "reminder_notification_status_denied"
+        case .notDetermined:
+            return "reminder_notification_status_not_determined"
+        @unknown default:
+            return "reminder_notification_status_unknown"
+        }
+    }
+
+    var helpLocalizationKey: String {
+        switch self {
+        case .authorized, .provisional, .ephemeral:
+            return "reminder_notification_status_help_enabled"
+        case .denied:
+            return "reminder_notification_status_help_denied"
+        case .notDetermined:
+            return "reminder_notification_status_help_not_determined"
+        @unknown default:
+            return "reminder_notification_status_help_unknown"
         }
     }
 }

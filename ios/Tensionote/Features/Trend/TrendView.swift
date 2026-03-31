@@ -16,13 +16,10 @@ struct TrendView: View {
                     )
                 } else {
                     Chart(records) { record in
-                        RectangleMark(
-                            xStart: .value(L10n.tr("chart_axis_date"), records.first?.measuredAt ?? .now),
-                            xEnd: .value(L10n.tr("chart_axis_date"), records.last?.measuredAt ?? .now),
-                            yStart: .value(L10n.tr("chart_axis_diastolic"), 60),
-                            yEnd: .value(L10n.tr("chart_axis_systolic"), 120)
-                        )
-                        .foregroundStyle(.green.opacity(0.08))
+                        RuleMark(y: .value(L10n.tr("chart_axis_systolic"), 140))
+                            .foregroundStyle(.red.opacity(0.25))
+                        RuleMark(y: .value(L10n.tr("chart_axis_diastolic"), 90))
+                            .foregroundStyle(.orange.opacity(0.25))
 
                         LineMark(
                             x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
@@ -39,6 +36,12 @@ struct TrendView: View {
                         PointMark(
                             x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
                             y: .value(L10n.tr("chart_axis_systolic"), record.systolic)
+                        )
+                        .foregroundStyle(pointColor(for: record.status))
+
+                        PointMark(
+                            x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
+                            y: .value(L10n.tr("chart_axis_diastolic"), record.diastolic)
                         )
                         .foregroundStyle(pointColor(for: record.status))
                     }
@@ -63,11 +66,15 @@ struct TrendView: View {
                         }
                     }
 
+                    Text(L10n.tr("trend_chart_legend"))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+
                     Text(trendSummaryText)
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
-                    ForEach(records) { record in
+                    ForEach(Array(records.reversed())) { record in
                         Button {
                             selectedRecordID = record.id
                         } label: {
@@ -90,7 +97,10 @@ struct TrendView: View {
         }
         .navigationTitle(L10n.tr("trend_title"))
         .onAppear {
-            selectedRecordID = records.last?.id
+            syncSelectedRecord()
+        }
+        .onChange(of: records) { _ in
+            syncSelectedRecord()
         }
     }
 
@@ -125,5 +135,14 @@ struct TrendView: View {
         case .variability:
             return .purple
         }
+    }
+
+    private func syncSelectedRecord() {
+        if let selectedRecordID,
+           records.contains(where: { $0.id == selectedRecordID }) {
+            return
+        }
+
+        self.selectedRecordID = records.last?.id
     }
 }
