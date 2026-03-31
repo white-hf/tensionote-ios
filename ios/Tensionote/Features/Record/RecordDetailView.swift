@@ -11,13 +11,7 @@ struct RecordDetailView: View {
     var body: some View {
         Form {
             Section(L10n.tr("record_detail_result_section")) {
-                detailRow(titleKey: "metric_systolic", value: "\(currentRecord.systolic)")
-                detailRow(titleKey: "metric_diastolic", value: "\(currentRecord.diastolic)")
-                detailRow(titleKey: "metric_heart_rate", value: "\(currentRecord.heartRate)")
-                detailRow(
-                    titleKey: "record_status_preview",
-                    value: L10n.tr(currentRecord.status.localizationKey)
-                )
+                metricSummaryRow
             }
 
             Section(L10n.tr("record_detail_info_section")) {
@@ -79,6 +73,54 @@ struct RecordDetailView: View {
         repository?.fetchRecord(id: record.id) ?? record
     }
 
+    private var metricSummaryRow: some View {
+        ViewThatFits(in: .horizontal) {
+            HStack(alignment: .firstTextBaseline, spacing: 12) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(L10n.tr("metric_systolic"))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Text("\(currentRecord.systolic)")
+                        .font(.title3.weight(.semibold))
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(L10n.tr("metric_diastolic"))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Text("\(currentRecord.diastolic)")
+                        .font(.title3.weight(.semibold))
+                }
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(L10n.tr("metric_heart_rate"))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Text("\(currentRecord.heartRate)")
+                        .font(.title3.weight(.semibold))
+                }
+
+                Spacer(minLength: 8)
+
+                VStack(alignment: .trailing, spacing: 4) {
+                    Text(L10n.tr("record_status_preview"))
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                    Text(L10n.tr(currentRecord.status.localizationKey))
+                        .font(.headline)
+                        .multilineTextAlignment(.trailing)
+                }
+            }
+
+            VStack(alignment: .leading, spacing: 10) {
+                labeledMetric(titleKey: "metric_systolic", value: "\(currentRecord.systolic)")
+                labeledMetric(titleKey: "metric_diastolic", value: "\(currentRecord.diastolic)")
+                labeledMetric(titleKey: "metric_heart_rate", value: "\(currentRecord.heartRate)")
+                labeledMetric(titleKey: "record_status_preview", value: L10n.tr(currentRecord.status.localizationKey))
+            }
+        }
+    }
+
     private var repositoryPublisher: AnyPublisher<[BloodPressureRecord], Never> {
         if let observableRepository = repository as? InMemoryBloodPressureRepository {
             return observableRepository.$records.eraseToAnyPublisher()
@@ -111,6 +153,19 @@ struct RecordDetailView: View {
                     .fixedSize(horizontal: false, vertical: true)
                     .minimumScaleFactor(0.85)
             }
+        }
+    }
+
+    private func labeledMetric(titleKey: String, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(L10n.tr(titleKey))
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+            Text(value)
+                .font(titleKey == "record_status_preview" ? .headline : .title3.weight(.semibold))
+                .multilineTextAlignment(.leading)
+                .foregroundStyle(titleKey == "record_status_preview" ? .primary : .primary)
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
 }
