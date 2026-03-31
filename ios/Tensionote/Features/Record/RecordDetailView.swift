@@ -57,6 +57,7 @@ struct RecordDetailView: View {
                         record = updatedRecord
                     }
                 }
+                .id(currentRecord.id)
             }
         }
         .onReceive(repositoryPublisher) { _ in

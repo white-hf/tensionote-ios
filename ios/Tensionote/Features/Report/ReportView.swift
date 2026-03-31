@@ -6,6 +6,8 @@ struct ReportView: View {
     @StateObject private var viewModel: ReportViewModel
     @State private var showShareSheet = false
     @State private var showMailComposer = false
+    @State private var shareAttachmentURL: URL?
+    @State private var mailAttachmentURL: URL?
     @State private var exportAlert: ExportAlert?
 
     struct ExportAlert: Identifiable {
@@ -114,14 +116,20 @@ struct ReportView: View {
                 }
                 .disabled(viewModel.records.isEmpty)
                 Button(L10n.tr("report_share_email")) {
+                    shareAttachmentURL = nil
+                    mailAttachmentURL = nil
                     if viewModel.exportedFileURL == nil {
                         viewModel.exportPDF()
                         handleExportState()
                     }
-                    if MFMailComposeViewController.canSendMail(), viewModel.exportedFileURL != nil {
-                        showMailComposer = viewModel.exportedFileURL != nil
-                    } else if viewModel.exportedFileURL != nil {
-                        showShareSheet = viewModel.exportedFileURL != nil
+                    if let fileURL = viewModel.exportedFileURL {
+                        if MFMailComposeViewController.canSendMail() {
+                            mailAttachmentURL = fileURL
+                            showMailComposer = true
+                        } else {
+                            shareAttachmentURL = fileURL
+                            showShareSheet = true
+                        }
                     } else {
                         handleExportState()
                     }
@@ -148,17 +156,27 @@ struct ReportView: View {
             viewModel.reload()
         }
         .sheet(isPresented: $showShareSheet) {
-            if let fileURL = viewModel.exportedFileURL {
+            if let fileURL = shareAttachmentURL {
                 ShareSheet(items: [fileURL])
             }
         }
         .sheet(isPresented: $showMailComposer) {
-            if let fileURL = viewModel.exportedFileURL {
+            if let fileURL = mailAttachmentURL {
                 MailComposer(
                     subject: viewModel.emailSubject,
                     body: viewModel.emailBody,
                     attachmentURL: fileURL
                 )
+            }
+        }
+        .onChange(of: showShareSheet) { isPresented in
+            if !isPresented {
+                shareAttachmentURL = nil
+            }
+        }
+        .onChange(of: showMailComposer) { isPresented in
+            if !isPresented {
+                mailAttachmentURL = nil
             }
         }
         .alert(item: $exportAlert) { payload in

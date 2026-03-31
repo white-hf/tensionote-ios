@@ -16,7 +16,14 @@ final class ReminderNotificationScheduler {
 
     func sync(reminders: [ReminderItem]) {
         let center = UNUserNotificationCenter.current()
-        center.removeAllPendingNotificationRequests()
+        let enabledReminderIDs = Set(reminders.filter(\.enabled).map(\.id.uuidString))
+
+        center.getPendingNotificationRequests { requests in
+            let identifiersToRemove = requests
+                .map(\.identifier)
+                .filter { !enabledReminderIDs.contains($0) }
+            center.removePendingNotificationRequests(withIdentifiers: identifiersToRemove)
+        }
 
         reminders.filter(\.enabled).forEach { reminder in
             var dateComponents = DateComponents()
