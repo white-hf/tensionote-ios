@@ -1,0 +1,110 @@
+﻿"app_name" = "Tensionote";
+"home_quick_entry_title" = "Quick Entry";
+"home_detailed_entry_button" = "Detailed Entry";
+"common_save_now" = "Save Now";
+"common_back" = "Back";
+"common_delete" = "Delete";
+"common_number_placeholder" = "0";
+
+"home_recent_two_weeks_trend" = "Last 2 Weeks Trend";
+"home_view_all_trend" = "View Full Trend";
+
+"metric_systolic" = "Systolic";
+"metric_diastolic" = "Diastolic";
+"metric_heart_rate" = "Heart Rate";
+"record_basic_section" = "Basic Data";
+"record_measured_at" = "Measured At";
+"record_extra_section" = "Additional Info";
+"record_note" = "Note";
+"record_status_preview" = "Status";
+"record_detail_title" = "Record Detail";
+"record_edit_title" = "Edit";
+"record_detail_result_section" = "Result";
+"record_detail_info_section" = "Info";
+"record_delete_button" = "Delete Record";
+"record_tags_section" = "Tags";
+"record_save_button" = "Save Record";
+
+"tab_home" = "Home";
+"tab_history" = "History";
+"tab_reminder" = "Reminder";
+"tab_report" = "Report";
+"tab_settings" = "Settings";
+
+"history_title" = "History";
+"history_empty_title" = "No records yet";
+"history_empty_body" = "Your saved blood pressure records will appear here.";
+"trend_title" = "Trend";
+"trend_empty_title" = "No trend data yet";
+"trend_empty_body" = "Add at least one record to view the last 2 weeks trend.";
+"reminder_title" = "Reminder";
+"reminder_every_day" = "Every day";
+"reminder_add" = "Add";
+"reminder_empty_title" = "No reminders yet";
+"reminder_empty_body" = "Add a reminder to get notified when it is time to measure your blood pressure.";
+"reminder_notification_title" = "Blood Pressure Reminder";
+"reminder_notification_body" = "It is time to record your blood pressure.";
+
+"report_range_title" = "Range";
+"report_range_7_days" = "7 Days";
+"report_range_14_days" = "14 Days";
+"report_range_30_days" = "30 Days";
+"report_range_custom" = "Custom Range";
+"report_custom_from" = "From";
+"report_custom_to" = "To";
+"report_empty_title" = "No records in this range";
+"report_empty_body" = "Change the range or add more blood pressure records.";
+"report_summary_title" = "Summary";
+"report_recent_records_title" = "Recent Records";
+"report_metric_count" = "Record Count";
+"report_metric_average_systolic" = "Average Systolic";
+"report_metric_average_diastolic" = "Average Diastolic";
+"report_metric_average_heart_rate" = "Average Heart Rate";
+"pdf_report_title" = "Tensionote Report";
+"pdf_report_range_label" = "Range";
+"pdf_report_average_label" = "Average";
+"report_export_pdf" = "Export PDF";
+"report_share_email" = "Share by Email";
+"report_export_result_prefix" = "Generated file:";
+"report_email_subject_format" = "Tensionote Blood Pressure Report (%d Days)";
+"report_email_body_format" = "Attached is the exported blood pressure report from Tensionote.\n\nRange: %d days\nRecords: %d\nAverage: %d / %d\nAverage Heart Rate: %d";
+
+"settings_language_title" = "Language";
+"settings_language_system" = "Follow System";
+"settings_language_zh" = "Simplified Chinese";
+"settings_language_en" = "English";
+"settings_language_hi" = "Hindi";
+"settings_documents_title" = "Documents";
+"settings_privacy_policy" = "Privacy Policy";
+"settings_terms" = "Terms of Service";
+"settings_disclaimer" = "Disclaimer";
+"document_privacy_content" = "Tensionote stores your blood pressure records, reminders, and exported reports on this device. The app does not upload your health data to a server in this version. When you choose email sharing or file sharing, the selected content is handed to the target app you choose.";
+"document_terms_content" = "Tensionote is provided as a personal blood pressure recording and management tool. You are responsible for reviewing exported content before sharing it. Do not rely on this app as a substitute for professional medical advice, diagnosis, or treatment.";
+"document_disclaimer_content" = "Tensionote helps you record and review blood pressure data. It does not diagnose disease, prescribe treatment, or replace a licensed clinician. If readings remain high or symptoms worsen, seek medical advice.";
+
+"chart_axis_date" = "Date";
+"chart_axis_systolic" = "Systolic";
+"chart_axis_diastolic" = "Diastolic";
+"trend_summary_normal" = "Recent records are all within the common normal range.";
+"trend_summary_counts" = "In the selected trend, systolic was high %d times and diastolic was high %d times.";
+
+"tag_morning" = "Morning";
+"tag_afternoon" = "Afternoon";
+"tag_evening" = "Evening";
+"tag_after_meal" = "After meal";
+"tag_after_exercise" = "After exercise";
+"tag_after_medication" = "After medication";
+"tag_discomfort" = "Discomfort";
+
+"validation_enter_valid_numbers" = "Please enter valid numbers.";
+"validation_out_of_range" = "Please enter values within a valid range.";
+
+"blood_pressure_status_normal" = "This reading is within the common normal range.";
+"blood_pressure_status_systolic_high" = "Systolic pressure is high.";
+"blood_pressure_status_diastolic_high" = "Diastolic pressure is high.";
+"blood_pressure_status_both_high" = "Systolic and diastolic pressure are high.";
+"blood_pressure_status_variability" = "Blood pressure has been fluctuating noticeably.";
+
+
+
+

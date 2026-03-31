@@ -1,0 +1,22 @@
+name: Tensionote
+options:
+  bundleIdPrefix: com.tensionote
+targets:
+  Tensionote:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - Tensionote
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tensionote.app
+        SWIFT_VERSION: 5.10
+        INFOPLIST_FILE: Tensionote/Info.plist
+    info:
+      path: Tensionote/Info.plist
+      properties:
+        CFBundleDisplayName: Tensionote
+        UILaunchScreen: {}
+        UIApplicationSceneManifest:
+          UIApplicationSupportsMultipleScenes: false

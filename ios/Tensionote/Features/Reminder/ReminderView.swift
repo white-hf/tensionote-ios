@@ -1,0 +1,93 @@
+import SwiftUI
+
+struct ReminderView: View {
+    @StateObject private var viewModel = ReminderViewModel()
+
+    var body: some View {
+        List {
+            if viewModel.reminders.isEmpty {
+                ContentUnavailableView(
+                    L10n.tr("reminder_empty_title"),
+                    systemImage: "bell.slash",
+                    description: Text(L10n.tr("reminder_empty_body"))
+                )
+            } else {
+                ForEach(viewModel.reminders) { reminder in
+                    reminderRow(reminder)
+                        .listRowInsets(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
+                        .listRowSeparator(.hidden)
+                        .listRowBackground(Color.clear)
+                }
+                .onDelete(perform: viewModel.deleteReminder)
+            }
+        }
+        .listStyle(.plain)
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Button(L10n.tr("reminder_add")) {
+                    viewModel.addReminder()
+                }
+            }
+        }
+        .navigationTitle(L10n.tr("reminder_title"))
+    }
+
+    @ViewBuilder
+    private func reminderRow(_ reminder: ReminderItem) -> some View {
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(reminder.timeLabel)
+                        .font(.title3.weight(.semibold))
+                    Text(L10n.tr("reminder_every_day"))
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                Spacer()
+                Toggle("", isOn: Binding(
+                    get: { reminder.enabled },
+                    set: { _ in viewModel.toggleReminder(reminder.id) }
+                ))
+                .labelsHidden()
+            }
+
+            DatePicker(
+                "",
+                selection: reminderDateBinding(for: reminder),
+                displayedComponents: .hourAndMinute
+            )
+            .labelsHidden()
+            .datePickerStyle(.wheel)
+            .frame(maxWidth: .infinity, alignment: .leading)
+
+            Button(role: .destructive) {
+                viewModel.deleteReminder(reminder.id)
+            } label: {
+                Text(L10n.tr("common_delete"))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .padding(16)
+        .background(
+            RoundedRectangle(cornerRadius: 20, style: .continuous)
+                .fill(Color(.secondarySystemBackground))
+        )
+    }
+
+    private func reminderDateBinding(for reminder: ReminderItem) -> Binding<Date> {
+        Binding(
+            get: {
+                let components = DateComponents(hour: reminder.hour, minute: reminder.minute)
+                return Calendar.current.date(from: components) ?? .now
+            },
+            set: { newValue in
+                let components = Calendar.current.dateComponents([.hour, .minute], from: newValue)
+                viewModel.updateReminder(
+                    reminder.id,
+                    hour: components.hour ?? reminder.hour,
+                    minute: components.minute ?? reminder.minute
+                )
+            }
+        )
+    }
+}

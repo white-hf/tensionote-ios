@@ -1,0 +1,110 @@
+﻿"app_name" = "Tensionote";
+"home_quick_entry_title" = "快速录入";
+"home_detailed_entry_button" = "详细录入";
+"common_save_now" = "立即保存";
+"common_back" = "返回";
+"common_delete" = "删除";
+"common_number_placeholder" = "0";
+
+"home_recent_two_weeks_trend" = "最近 2 周趋势";
+"home_view_all_trend" = "查看完整趋势";
+
+"metric_systolic" = "收缩压";
+"metric_diastolic" = "舒张压";
+"metric_heart_rate" = "心率";
+"record_basic_section" = "基础数据";
+"record_measured_at" = "测量时间";
+"record_extra_section" = "补充信息";
+"record_note" = "备注";
+"record_status_preview" = "状态";
+"record_detail_title" = "记录详情";
+"record_edit_title" = "编辑";
+"record_detail_result_section" = "结果";
+"record_detail_info_section" = "信息";
+"record_delete_button" = "删除记录";
+"record_tags_section" = "标签";
+"record_save_button" = "保存记录";
+
+"tab_home" = "首页";
+"tab_history" = "历史";
+"tab_reminder" = "提醒";
+"tab_report" = "报告";
+"tab_settings" = "设置";
+
+"history_title" = "历史记录";
+"history_empty_title" = "还没有记录";
+"history_empty_body" = "你保存的血压记录会显示在这里。";
+"trend_title" = "趋势";
+"trend_empty_title" = "还没有趋势数据";
+"trend_empty_body" = "至少添加 1 条记录后，才能查看最近 2 周趋势。";
+"reminder_title" = "提醒";
+"reminder_every_day" = "每天";
+"reminder_add" = "新增";
+"reminder_empty_title" = "还没有提醒";
+"reminder_empty_body" = "添加提醒后，你会在该测量血压时收到通知。";
+"reminder_notification_title" = "血压测量提醒";
+"reminder_notification_body" = "该记录你的血压了。";
+
+"report_range_title" = "时间范围";
+"report_range_7_days" = "7 天";
+"report_range_14_days" = "14 天";
+"report_range_30_days" = "30 天";
+"report_range_custom" = "自定义范围";
+"report_custom_from" = "开始日期";
+"report_custom_to" = "结束日期";
+"report_empty_title" = "当前范围内没有记录";
+"report_empty_body" = "请调整时间范围或继续添加血压记录。";
+"report_summary_title" = "摘要";
+"report_recent_records_title" = "最近记录";
+"report_metric_count" = "记录数";
+"report_metric_average_systolic" = "平均收缩压";
+"report_metric_average_diastolic" = "平均舒张压";
+"report_metric_average_heart_rate" = "平均心率";
+"pdf_report_title" = "Tensionote 报告";
+"pdf_report_range_label" = "范围";
+"pdf_report_average_label" = "平均值";
+"report_export_pdf" = "导出 PDF";
+"report_share_email" = "邮件分享";
+"report_export_result_prefix" = "已生成文件：";
+"report_email_subject_format" = "Tensionote 血压报告（%d 天）";
+"report_email_body_format" = "附件是从 Tensionote 导出的血压报告。\n\n范围：%d 天\n记录数：%d\n平均值：%d / %d\n平均心率：%d";
+
+"settings_language_title" = "语言";
+"settings_language_system" = "跟随系统";
+"settings_language_zh" = "简体中文";
+"settings_language_en" = "英文";
+"settings_language_hi" = "印地语";
+"settings_documents_title" = "文档";
+"settings_privacy_policy" = "隐私政策";
+"settings_terms" = "用户协议";
+"settings_disclaimer" = "免责声明";
+"document_privacy_content" = "Tensionote 会将血压记录、提醒和导出的报告保存在当前设备中。本版本不会将你的健康数据上传到服务器。当你主动使用邮件分享或文件分享时，所选内容会交给你选择的目标应用处理。";
+"document_terms_content" = "Tensionote 是一款用于个人血压记录与管理的工具。分享前，请你自行确认导出内容是否准确完整。该应用不能替代专业医生的建议、诊断或治疗。";
+"document_disclaimer_content" = "Tensionote 用于帮助你记录和查看血压数据，不提供疾病诊断、治疗建议，也不能替代持证医生。如果血压持续偏高或身体不适加重，请及时咨询医生。";
+
+"chart_axis_date" = "日期";
+"chart_axis_systolic" = "收缩压";
+"chart_axis_diastolic" = "舒张压";
+"trend_summary_normal" = "最近记录都处于常见正常范围。";
+"trend_summary_counts" = "当前趋势中，收缩压偏高 %d 次，舒张压偏高 %d 次。";
+
+"tag_morning" = "晨起";
+"tag_afternoon" = "午后";
+"tag_evening" = "晚间";
+"tag_after_meal" = "饭后";
+"tag_after_exercise" = "运动后";
+"tag_after_medication" = "服药后";
+"tag_discomfort" = "不适";
+
+"validation_enter_valid_numbers" = "请输入有效数字。";
+"validation_out_of_range" = "请输入在合理范围内的数值。";
+
+"blood_pressure_status_normal" = "当前记录处于常见正常范围。";
+"blood_pressure_status_systolic_high" = "收缩压偏高。";
+"blood_pressure_status_diastolic_high" = "舒张压偏高。";
+"blood_pressure_status_both_high" = "收缩压和舒张压偏高。";
+"blood_pressure_status_variability" = "最近血压波动较明显。";
+
+
+
+

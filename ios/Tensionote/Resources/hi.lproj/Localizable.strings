@@ -1,0 +1,111 @@
+﻿"app_name" = "Tensionote";
+"home_quick_entry_title" = "त्वरित प्रविष्टि";
+"home_detailed_entry_button" = "विस्तृत प्रविष्टि";
+"common_save_now" = "अभी सहेजें";
+"common_back" = "वापस";
+"common_delete" = "हटाएँ";
+"common_number_placeholder" = "0";
+
+"home_recent_two_weeks_trend" = "पिछले 2 सप्ताह की प्रवृत्ति";
+"home_view_all_trend" = "पूरी प्रवृत्ति देखें";
+
+"metric_systolic" = "सिस्टोलिक";
+"metric_diastolic" = "डायस्टोलिक";
+"metric_heart_rate" = "हृदय गति";
+"record_basic_section" = "मूल डेटा";
+"record_measured_at" = "माप का समय";
+"record_extra_section" = "अतिरिक्त जानकारी";
+"record_note" = "नोट";
+"record_status_preview" = "स्थिति";
+"record_detail_title" = "रिकॉर्ड विवरण";
+"record_edit_title" = "संपादित करें";
+"record_detail_result_section" = "परिणाम";
+"record_detail_info_section" = "जानकारी";
+"record_delete_button" = "रिकॉर्ड हटाएँ";
+"record_tags_section" = "टैग";
+"record_save_button" = "रिकॉर्ड सहेजें";
+
+"tab_home" = "होम";
+"tab_history" = "इतिहास";
+"tab_reminder" = "रिमाइंडर";
+"tab_report" = "रिपोर्ट";
+"tab_settings" = "सेटिंग्स";
+
+"history_title" = "इतिहास";
+"history_empty_title" = "अभी कोई रिकॉर्ड नहीं है";
+"history_empty_body" = "आपके सहेजे गए रक्तचाप रिकॉर्ड यहाँ दिखेंगे।";
+"trend_title" = "प्रवृत्ति";
+"trend_empty_title" = "अभी कोई प्रवृत्ति डेटा नहीं है";
+"trend_empty_body" = "पिछले 2 सप्ताह की प्रवृत्ति देखने के लिए कम से कम 1 रिकॉर्ड जोड़ें।";
+"reminder_title" = "रिमाइंडर";
+"reminder_every_day" = "हर दिन";
+"reminder_add" = "जोड़ें";
+"reminder_empty_title" = "अभी कोई रिमाइंडर नहीं है";
+"reminder_empty_body" = "रिमाइंडर जोड़ें ताकि रक्तचाप मापने के समय आपको सूचना मिले।";
+"reminder_notification_title" = "रक्तचाप रिमाइंडर";
+"reminder_notification_body" = "अब अपना रक्तचाप दर्ज करने का समय है।";
+
+"report_range_title" = "अवधि";
+"report_range_7_days" = "7 दिन";
+"report_range_14_days" = "14 दिन";
+"report_range_30_days" = "30 दिन";
+"report_range_custom" = "कस्टम अवधि";
+"report_custom_from" = "प्रारंभ तिथि";
+"report_custom_to" = "समाप्ति तिथि";
+"report_empty_title" = "इस अवधि में कोई रिकॉर्ड नहीं है";
+"report_empty_body" = "समय सीमा बदलें या और रक्तचाप रिकॉर्ड जोड़ें।";
+"report_summary_title" = "सारांश";
+"report_recent_records_title" = "हाल के रिकॉर्ड";
+"report_metric_count" = "रिकॉर्ड संख्या";
+"report_metric_average_systolic" = "औसत सिस्टोलिक";
+"report_metric_average_diastolic" = "औसत डायस्टोलिक";
+"report_metric_average_heart_rate" = "औसत हृदय गति";
+"pdf_report_title" = "Tensionote रिपोर्ट";
+"pdf_report_range_label" = "अवधि";
+"pdf_report_average_label" = "औसत";
+"report_export_pdf" = "PDF निर्यात करें";
+"report_share_email" = "ईमेल से साझा करें";
+"report_export_result_prefix" = "फ़ाइल बनाई गई:";
+"report_email_subject_format" = "Tensionote रक्तचाप रिपोर्ट (%d दिन)";
+"report_email_body_format" = "संलग्नक में Tensionote से निर्यात की गई रक्तचाप रिपोर्ट है।\n\nअवधि: %d दिन\nरिकॉर्ड: %d\nऔसत: %d / %d\nऔसत हृदय गति: %d";
+
+"settings_language_title" = "भाषा";
+"settings_language_system" = "सिस्टम का पालन करें";
+"settings_language_zh" = "सरलीकृत चीनी";
+"settings_language_en" = "अंग्रेज़ी";
+"settings_language_hi" = "हिंदी";
+"settings_documents_title" = "दस्तावेज़";
+"settings_privacy_policy" = "गोपनीयता नीति";
+"settings_terms" = "सेवा की शर्तें";
+"settings_disclaimer" = "अस्वीकरण";
+"document_privacy_content" = "Tensionote इस संस्करण में आपके रक्तचाप रिकॉर्ड, रिमाइंडर और निर्यात की गई रिपोर्ट इसी डिवाइस पर संग्रहीत करता है। ऐप आपके स्वास्थ्य डेटा को सर्वर पर अपलोड नहीं करता। जब आप ईमेल या फ़ाइल साझा करना चुनते हैं, तो चुनी गई सामग्री आपके चुने हुए ऐप को सौंपी जाती है।";
+"document_terms_content" = "Tensionote व्यक्तिगत रक्तचाप रिकॉर्ड और प्रबंधन के लिए एक उपकरण है। साझा करने से पहले निर्यात की गई सामग्री की समीक्षा करना आपकी जिम्मेदारी है। यह ऐप पेशेवर चिकित्सीय सलाह, निदान या उपचार का विकल्प नहीं है।";
+"document_disclaimer_content" = "Tensionote आपको रक्तचाप डेटा दर्ज करने और देखने में मदद करता है। यह बीमारी का निदान नहीं करता, उपचार निर्धारित नहीं करता और न ही लाइसेंस प्राप्त चिकित्सक का स्थान लेता है। यदि रीडिंग लगातार ऊँची रहे या लक्षण बढ़ें, तो चिकित्सकीय सलाह लें।";
+
+"chart_axis_date" = "तारीख";
+"chart_axis_systolic" = "सिस्टोलिक";
+"chart_axis_diastolic" = "डायस्टोलिक";
+"trend_summary_normal" = "हाल के सभी रिकॉर्ड सामान्य सीमा में हैं।";
+"trend_summary_counts" = "चयनित प्रवृत्ति में सिस्टोलिक %d बार और डायस्टोलिक %d बार ऊँचा था।";
+
+"tag_morning" = "सुबह";
+"tag_afternoon" = "दोपहर";
+"tag_evening" = "शाम";
+"tag_after_meal" = "भोजन के बाद";
+"tag_after_exercise" = "व्यायाम के बाद";
+"tag_after_medication" = "दवा के बाद";
+"tag_discomfort" = "अस्वस्थता";
+
+"validation_enter_valid_numbers" = "कृपया मान्य संख्याएँ दर्ज करें।";
+"validation_out_of_range" = "कृपया मान्य सीमा के भीतर मान दर्ज करें।";
+
+"blood_pressure_status_normal" = "यह रीडिंग सामान्य सीमा में है।";
+"blood_pressure_status_systolic_high" = "सिस्टोलिक दबाव ऊँचा है।";
+"blood_pressure_status_diastolic_high" = "डायस्टोलिक दबाव ऊँचा है।";
+"blood_pressure_status_both_high" = "सिस्टोलिक और डायस्टोलिक दबाव ऊँचे हैं।";
+"blood_pressure_status_variability" = "रक्तचाप में हाल में स्पष्ट उतार-चढ़ाव रहा है।";
+
+
+
+
+
