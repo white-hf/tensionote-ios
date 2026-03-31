@@ -88,6 +88,10 @@ struct TrendView: View {
                                 Spacer()
                                 Text("\(record.systolic)/\(record.diastolic)")
                             }
+                            .padding(.vertical, 4)
+                            .padding(.horizontal, 8)
+                            .background(selectedRecordID == record.id ? Color.accentColor.opacity(0.12) : Color.clear)
+                            .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         .buttonStyle(.plain)
                     }
