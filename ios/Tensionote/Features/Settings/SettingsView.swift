@@ -1,4 +1,4 @@
-﻿import SwiftUI
+import SwiftUI
 
 struct SettingsView: View {
     @AppStorage("selectedLanguageCode") private var selectedLanguageCode = "system"
@@ -10,8 +10,8 @@ struct SettingsView: View {
     ]
 
     var body: some View {
-        Form {
-            Section(L10n.tr("settings_language_title")) {
+        Form(content: {
+            Section(content: {
                 ForEach(languageOptions, id: \.code) { option in
                     Button {
                         selectedLanguageCode = option.code
@@ -28,9 +28,11 @@ struct SettingsView: View {
                     }
                     .buttonStyle(.plain)
                 }
-            }
+            }, header: {
+                Text(L10n.tr("settings_language_title"))
+            })
 
-            Section(L10n.tr("settings_documents_title")) {
+            Section(content: {
                 NavigationLink(L10n.tr("settings_privacy_policy")) {
                     DocumentView(
                         titleKey: "settings_privacy_policy",
@@ -49,11 +51,12 @@ struct SettingsView: View {
                         bodyKey: "document_disclaimer_content"
                     )
                 }
-            } footer: {
+            }, header: {
+                Text(L10n.tr("settings_documents_title"))
+            }, footer: {
                 Text(L10n.tr("settings_documents_description"))
-            }
-        }
+            })
+        })
         .navigationTitle(L10n.tr("tab_settings"))
     }
 }
-

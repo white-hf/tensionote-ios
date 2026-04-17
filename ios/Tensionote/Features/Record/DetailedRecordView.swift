@@ -16,7 +16,7 @@ struct DetailedRecordView: View {
     @State private var selectedTags: Set<String> = []
     @State private var validationMessageKey: String?
     private let validator = RecordInputValidator()
-    private let evaluator = BloodPressureStatusEvaluator()
+    private let evaluator = RegionalBloodPressureEvaluator()
 
     private let tagKeys = [
         "tag_morning",
@@ -111,9 +111,9 @@ struct DetailedRecordView: View {
                 HStack {
                     Text(L10n.tr("record_status_preview"))
                     Spacer()
-                    Text(L10n.tr(previewStatus.localizationKey))
+                    Text(L10n.tr(previewCategory.localizationKey))
                         .multilineTextAlignment(.trailing)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(previewCategory.tintColor)
                 }
             }
 
@@ -162,7 +162,7 @@ struct DetailedRecordView: View {
         dismiss()
     }
 
-    private var previewStatus: BloodPressureStatus {
+    private var previewCategory: BloodPressureCategory {
         guard
             let systolicValue = Int(systolic),
             let diastolicValue = Int(diastolic)

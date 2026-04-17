@@ -15,10 +15,11 @@ struct TrendView: View {
                         description: Text(L10n.tr("trend_empty_body"))
                     )
                 } else {
+                    let evaluator = RegionalBloodPressureEvaluator()
                     Chart(records) { record in
-                        RuleMark(y: .value(L10n.tr("chart_axis_systolic"), 140))
+                        RuleMark(y: .value(L10n.tr("chart_axis_systolic"), evaluator.standard.hypertensionSystolicThreshold))
                             .foregroundStyle(.red.opacity(0.25))
-                        RuleMark(y: .value(L10n.tr("chart_axis_diastolic"), 90))
+                        RuleMark(y: .value(L10n.tr("chart_axis_diastolic"), evaluator.standard.hypertensionDiastolicThreshold))
                             .foregroundStyle(.orange.opacity(0.25))
 
                         LineMark(
@@ -37,20 +38,22 @@ struct TrendView: View {
                             x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
                             y: .value(L10n.tr("chart_axis_systolic"), record.systolic)
                         )
-                        .foregroundStyle(pointColor(for: record.status))
+                        .foregroundStyle(record.regionalCategory.tintColor)
 
                         PointMark(
                             x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
                             y: .value(L10n.tr("chart_axis_diastolic"), record.diastolic)
                         )
-                        .foregroundStyle(pointColor(for: record.status))
+                        .foregroundStyle(record.regionalCategory.tintColor)
                     }
                     .frame(height: 260)
 
                     if let selectedRecord {
+                        let category = selectedRecord.regionalCategory
                         VStack(alignment: .leading, spacing: 6) {
-                            Text(L10n.tr(selectedRecord.status.localizationKey))
+                            Text(L10n.tr(category.localizationKey))
                                 .font(.headline)
+                                .foregroundStyle(category.tintColor)
                             Text(selectedRecord.measuredAt.formatted(date: .abbreviated, time: .shortened))
                                 .font(.subheadline)
                                 .foregroundStyle(.secondary)
@@ -66,7 +69,13 @@ struct TrendView: View {
                         }
                     }
 
-                    Text(L10n.tr("trend_chart_legend"))
+                    Text(
+                        L10n.format(
+                            "trend_chart_legend_thresholds",
+                            evaluator.standard.hypertensionSystolicThreshold,
+                            evaluator.standard.hypertensionDiastolicThreshold
+                        )
+                    )
                         .font(.footnote)
                         .foregroundStyle(.secondary)
 
@@ -81,16 +90,16 @@ struct TrendView: View {
                             HStack {
                                 VStack(alignment: .leading, spacing: 2) {
                                     Text(record.measuredAt.formatted(date: .abbreviated, time: .omitted))
-                                    Text(L10n.tr(record.status.localizationKey))
+                                    Text(L10n.tr(record.regionalCategory.localizationKey))
                                         .font(.caption)
-                                        .foregroundStyle(.secondary)
+                                        .foregroundStyle(record.regionalCategory.tintColor)
                                 }
                                 Spacer()
                                 Text("\(record.systolic)/\(record.diastolic)")
                             }
                             .padding(.vertical, 4)
                             .padding(.horizontal, 8)
-                            .background(selectedRecordID == record.id ? Color.accentColor.opacity(0.12) : Color.clear)
+                            .background(selectedRecordID == record.id ? record.regionalCategory.backgroundColor : Color.clear)
                             .clipShape(RoundedRectangle(cornerRadius: 10))
                         }
                         .buttonStyle(.plain)
@@ -117,28 +126,18 @@ struct TrendView: View {
     }
 
     private var trendSummaryText: String {
-        let systolicHighCount = records.filter { $0.status == .systolicHigh || $0.status == .bothHigh }.count
-        let diastolicHighCount = records.filter { $0.status == .diastolicHigh || $0.status == .bothHigh }.count
+        let evaluator = RegionalBloodPressureEvaluator()
+        let systolicHighCount = records.filter {
+            evaluator.standard.isSystolicAboveHypertensionThreshold($0.systolic)
+        }.count
+        let diastolicHighCount = records.filter {
+            evaluator.standard.isDiastolicAboveHypertensionThreshold($0.diastolic)
+        }.count
         if systolicHighCount == 0 && diastolicHighCount == 0 {
             return L10n.tr("trend_summary_normal")
         }
 
         return L10n.format("trend_summary_counts", systolicHighCount, diastolicHighCount)
-    }
-
-    private func pointColor(for status: BloodPressureStatus) -> Color {
-        switch status {
-        case .normal:
-            return .green
-        case .systolicHigh:
-            return .red
-        case .diastolicHigh:
-            return .orange
-        case .bothHigh:
-            return .red.opacity(0.85)
-        case .variability:
-            return .purple
-        }
     }
 
     private func syncSelectedRecord() {

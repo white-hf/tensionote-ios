@@ -1,15 +1,24 @@
 import Charts
+import OSLog
 import SwiftUI
 
 struct HomeView: View {
+    private enum Field: Hashable {
+        case systolic
+        case diastolic
+        case heartRate
+    }
+
     @StateObject private var viewModel: HomeViewModel
     @State private var showDetailedEntry = false
+    @FocusState private var focusedField: Field?
+    private let logger = Logger(subsystem: "com.tensionote.app", category: "home")
 
     init(repository: InMemoryBloodPressureRepository) {
         _viewModel = StateObject(
             wrappedValue: HomeViewModel(
                 repository: repository,
-                evaluator: BloodPressureStatusEvaluator()
+                evaluator: RegionalBloodPressureEvaluator()
             )
         )
     }
@@ -25,10 +34,16 @@ struct HomeView: View {
         .navigationTitle(L10n.tr("app_name"))
         .background(Color(.systemGroupedBackground))
         .onAppear {
+            logger.log("HomeView appeared")
             viewModel.reload()
         }
-        .onReceive(viewModel.repositoryPublisher) { _ in
-            viewModel.reload()
+        .toolbar {
+            ToolbarItemGroup(placement: .keyboard) {
+                Spacer()
+                Button(L10n.tr("common_done")) {
+                    focusedField = nil
+                }
+            }
         }
         .navigationDestination(isPresented: $showDetailedEntry) {
             DetailedRecordView(
@@ -68,6 +83,9 @@ struct HomeView: View {
             }
             .buttonStyle(.borderedProminent)
             .disabled(!viewModel.canSaveQuickRecord)
+            .simultaneousGesture(TapGesture().onEnded {
+                focusedField = nil
+            })
 
             if let validationMessageKey = viewModel.validationMessageKey {
                 Text(L10n.tr(validationMessageKey))
@@ -100,10 +118,11 @@ struct HomeView: View {
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
+                let evaluator = RegionalBloodPressureEvaluator()
                 Chart(viewModel.trendRecords) { record in
-                    RuleMark(y: .value(L10n.tr("chart_axis_systolic"), 140))
+                    RuleMark(y: .value(L10n.tr("chart_axis_systolic"), evaluator.standard.hypertensionSystolicThreshold))
                         .foregroundStyle(.red.opacity(0.25))
-                    RuleMark(y: .value(L10n.tr("chart_axis_diastolic"), 90))
+                    RuleMark(y: .value(L10n.tr("chart_axis_diastolic"), evaluator.standard.hypertensionDiastolicThreshold))
                         .foregroundStyle(.orange.opacity(0.25))
 
                     LineMark(
@@ -122,21 +141,27 @@ struct HomeView: View {
                         x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
                         y: .value(L10n.tr("chart_axis_systolic"), record.systolic)
                     )
-                    .foregroundStyle(pointColor(for: record.status))
+                    .foregroundStyle(record.regionalCategory.tintColor)
 
                     PointMark(
                         x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
                         y: .value(L10n.tr("chart_axis_diastolic"), record.diastolic)
                     )
-                    .foregroundStyle(pointColor(for: record.status))
+                    .foregroundStyle(record.regionalCategory.tintColor)
                 }
                 .frame(height: 220)
 
-                Text(L10n.tr(viewModel.displayStatus.localizationKey))
+                Text(L10n.tr(viewModel.displayCategory.localizationKey))
                     .font(.headline)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(viewModel.displayCategory.tintColor)
 
-                Text(L10n.tr("trend_chart_legend"))
+                Text(
+                    L10n.format(
+                        "trend_chart_legend_thresholds",
+                        evaluator.standard.hypertensionSystolicThreshold,
+                        evaluator.standard.hypertensionDiastolicThreshold
+                    )
+                )
                     .font(.footnote)
                     .foregroundStyle(.secondary)
 
@@ -157,32 +182,34 @@ struct HomeView: View {
             TextField(L10n.tr("common_number_placeholder"), text: text)
                 .keyboardType(.numberPad)
                 .textFieldStyle(.roundedBorder)
-        }
-    }
-
-    private func pointColor(for status: BloodPressureStatus) -> Color {
-        switch status {
-        case .normal:
-            return .green
-        case .systolicHigh:
-            return .red
-        case .diastolicHigh:
-            return .orange
-        case .bothHigh:
-            return .red.opacity(0.85)
-        case .variability:
-            return .purple
+                .focused($focusedField, equals: field(for: titleKey))
         }
     }
 
     private var trendSummaryText: String {
-        let systolicHighCount = viewModel.trendRecords.filter { $0.status == .systolicHigh || $0.status == .bothHigh }.count
-        let diastolicHighCount = viewModel.trendRecords.filter { $0.status == .diastolicHigh || $0.status == .bothHigh }.count
+        let evaluator = RegionalBloodPressureEvaluator()
+        let systolicHighCount = viewModel.trendRecords.filter {
+            evaluator.standard.isSystolicAboveHypertensionThreshold($0.systolic)
+        }.count
+        let diastolicHighCount = viewModel.trendRecords.filter {
+            evaluator.standard.isDiastolicAboveHypertensionThreshold($0.diastolic)
+        }.count
 
         if systolicHighCount == 0 && diastolicHighCount == 0 {
             return L10n.tr("trend_summary_normal")
         }
 
         return L10n.format("trend_summary_counts", systolicHighCount, diastolicHighCount)
+    }
+
+    private func field(for titleKey: String) -> Field {
+        switch titleKey {
+        case "metric_systolic":
+            return .systolic
+        case "metric_diastolic":
+            return .diastolic
+        default:
+            return .heartRate
+        }
     }
 }

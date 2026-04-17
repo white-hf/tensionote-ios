@@ -35,7 +35,8 @@ struct HistoryView: View {
     }
 
     private func recordRow(_ record: BloodPressureRecord) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
+        let category = record.regionalCategory
+        return VStack(alignment: .leading, spacing: 8) {
             Text(record.measuredAt.formatted(date: .abbreviated, time: .shortened))
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
@@ -59,9 +60,9 @@ struct HistoryView: View {
 
                     Spacer(minLength: 8)
 
-                    Text(L10n.tr(record.status.localizationKey))
+                    Text(L10n.tr(category.localizationKey))
                         .font(.subheadline)
-                        .foregroundStyle(statusColor(for: record.status))
+                        .foregroundStyle(category.tintColor)
                         .multilineTextAlignment(.trailing)
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.85)
@@ -72,9 +73,9 @@ struct HistoryView: View {
                         .font(.headline)
                         .lineLimit(1)
                         .minimumScaleFactor(0.9)
-                    Text(L10n.tr(record.status.localizationKey))
+                    Text(L10n.tr(category.localizationKey))
                         .font(.subheadline)
-                        .foregroundStyle(statusColor(for: record.status))
+                        .foregroundStyle(category.tintColor)
                         .fixedSize(horizontal: false, vertical: true)
                         .minimumScaleFactor(0.85)
                     HStack(alignment: .firstTextBaseline, spacing: 6) {
@@ -90,20 +91,15 @@ struct HistoryView: View {
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.vertical, 6)
-    }
-
-    private func statusColor(for status: BloodPressureStatus) -> Color {
-        switch status {
-        case .normal:
-            return .green
-        case .systolicHigh:
-            return .red
-        case .diastolicHigh:
-            return .orange
-        case .bothHigh:
-            return .red.opacity(0.85)
-        case .variability:
-            return .purple
+        .padding(.leading, 14)
+        .padding(.trailing, 8)
+        .background(category.backgroundColor)
+        .overlay(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                .fill(category.tintColor)
+                .frame(width: 6)
+                .padding(.vertical, 4)
         }
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 }

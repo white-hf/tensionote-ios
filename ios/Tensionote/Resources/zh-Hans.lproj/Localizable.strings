@@ -3,7 +3,9 @@
 "home_detailed_entry_button" = "详细录入";
 "common_save_now" = "立即保存";
 "common_back" = "返回";
+"common_done" = "完成";
 "common_delete" = "删除";
+"common_cancel" = "取消";
 "common_number_placeholder" = "0";
 
 "home_recent_two_weeks_trend" = "最近 2 周趋势";
@@ -40,6 +42,8 @@
 "reminder_title" = "提醒";
 "reminder_every_day" = "每天";
 "reminder_add" = "新增";
+"reminder_delete_confirm_title" = "删除这个提醒？";
+"reminder_delete_confirm_body" = "继续后，这个提醒将被移除。";
 "reminder_empty_title" = "还没有提醒";
 "reminder_empty_body" = "添加提醒后，你会在该测量血压时收到通知。";
 "reminder_notification_status_title" = "通知状态";
@@ -81,6 +85,7 @@
 "report_export_pdf" = "导出 PDF";
 "report_share_email" = "邮件分享";
 "report_export_result_prefix" = "已生成文件：";
+"report_export_saved_hint" = "已打开系统分享面板，可保存到“文件”或发送到其他应用。";
 "report_email_subject_format" = "Tensionote 血压报告（%d 天）";
 "report_email_body_format" = "附件是从 Tensionote 导出的血压报告。\n\n范围：%d 天\n记录数：%d\n平均值：%d / %d\n平均心率：%d";
 
@@ -101,6 +106,7 @@
 "chart_axis_date" = "日期";
 "chart_axis_systolic" = "收缩压";
 "chart_axis_diastolic" = "舒张压";
+"trend_chart_legend_thresholds" = "当前区域高血压阈值：收缩压 %d，舒张压 %d。";
 "trend_summary_normal" = "最近记录都处于常见正常范围。";
 "trend_summary_counts" = "当前趋势中，收缩压偏高 %d 次，舒张压偏高 %d 次。";
 "trend_chart_legend" = "红线表示收缩压偏高阈值，橙线表示舒张压偏高阈值。";
@@ -116,12 +122,21 @@
 "validation_enter_valid_numbers" = "请输入有效数字。";
 "validation_out_of_range" = "请输入在合理范围内的数值。";
 
+"blood_pressure_category_normal" = "正常";
+"blood_pressure_category_high_normal" = "正常高值";
+"blood_pressure_category_elevated" = "血压偏高";
+"blood_pressure_category_stage_1_hypertension" = "1 期高血压";
+"blood_pressure_category_stage_2_hypertension" = "2 期高血压";
+"blood_pressure_category_hypertension" = "高血压";
+"blood_pressure_category_grade_1_hypertension" = "1 级高血压";
+"blood_pressure_category_grade_2_hypertension" = "2 级高血压";
+"blood_pressure_category_grade_3_hypertension" = "3 级高血压";
+"blood_pressure_category_severe_hypertension" = "重度高血压";
+"blood_pressure_category_hypertensive_crisis" = "高血压危象";
+
 "blood_pressure_status_normal" = "当前记录处于常见正常范围。";
 "blood_pressure_status_systolic_high" = "收缩压偏高。";
 "blood_pressure_status_diastolic_high" = "舒张压偏高。";
 "blood_pressure_status_both_high" = "收缩压和舒张压偏高。";
 "blood_pressure_status_variability" = "最近血压波动较明显。";
-
-
-
 

@@ -14,7 +14,7 @@ struct EditRecordView: View {
     @State private var selectedTags: Set<String>
     @State private var validationMessageKey: String?
     private let validator = RecordInputValidator()
-    private let evaluator = BloodPressureStatusEvaluator()
+    private let evaluator = RegionalBloodPressureEvaluator()
 
     private let tagKeys = [
         "tag_morning",
@@ -104,9 +104,9 @@ struct EditRecordView: View {
                 HStack {
                     Text(L10n.tr("record_status_preview"))
                     Spacer()
-                    Text(L10n.tr(previewStatus.localizationKey))
+                    Text(L10n.tr(previewCategory.localizationKey))
                         .multilineTextAlignment(.trailing)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(previewCategory.tintColor)
                 }
             }
 
@@ -167,12 +167,12 @@ struct EditRecordView: View {
         dismiss()
     }
 
-    private var previewStatus: BloodPressureStatus {
+    private var previewCategory: BloodPressureCategory {
         guard
             let systolicValue = Int(systolic),
             let diastolicValue = Int(diastolic)
         else {
-            return record.status
+            return record.regionalCategory
         }
         return evaluator.evaluate(systolic: systolicValue, diastolic: diastolicValue)
     }

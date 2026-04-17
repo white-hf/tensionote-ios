@@ -5,9 +5,7 @@ struct ReportView: View {
     @ObservedObject var repository: InMemoryBloodPressureRepository
     @StateObject private var viewModel: ReportViewModel
     @State private var showShareSheet = false
-    @State private var showMailComposer = false
-    @State private var shareAttachmentURL: URL?
-    @State private var mailAttachmentURL: URL?
+    @State private var shareItems: [Any] = []
     @State private var exportAlert: ExportAlert?
 
     struct ExportAlert: Identifiable {
@@ -90,6 +88,7 @@ struct ReportView: View {
             if !viewModel.records.isEmpty {
                 Section(L10n.tr("report_recent_records_title")) {
                     ForEach(viewModel.records.prefix(5)) { record in
+                        let category = record.regionalCategory
                         VStack(alignment: .leading, spacing: 4) {
                             Text(record.measuredAt.formatted(date: .abbreviated, time: .shortened))
                                 .font(.footnote)
@@ -101,38 +100,43 @@ struct ReportView: View {
                                 Text("\(record.heartRate)")
                             }
                             .font(.footnote)
-                            Text(L10n.tr(record.status.localizationKey))
+                            Text(L10n.tr(category.localizationKey))
                                 .font(.footnote)
-                                .foregroundStyle(statusColor(for: record.status))
+                                .foregroundStyle(category.tintColor)
                         }
+                        .padding(.vertical, 8)
+                        .padding(.leading, 14)
+                        .padding(.trailing, 8)
+                        .background(category.backgroundColor)
+                        .overlay(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                                .fill(category.tintColor)
+                                .frame(width: 6)
+                                .padding(.vertical, 6)
+                        }
+                        .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                     }
                 }
             }
 
             Section {
                 Button(L10n.tr("report_export_pdf")) {
-                    viewModel.exportPDF()
-                    handleExportState()
+                    exportAndPresentShareSheet()
                 }
                 .disabled(viewModel.records.isEmpty)
                 Button(L10n.tr("report_share_email")) {
-                    shareAttachmentURL = nil
-                    mailAttachmentURL = nil
-                    if viewModel.exportedFileURL == nil {
-                        viewModel.exportPDF()
-                        handleExportState()
+                    guard let fileURL = prepareExportedPDF() else {
+                        return
                     }
-                    if let fileURL = viewModel.exportedFileURL {
-                        if MFMailComposeViewController.canSendMail() {
-                            mailAttachmentURL = fileURL
-                            showMailComposer = true
-                        } else {
-                            shareAttachmentURL = fileURL
-                            showShareSheet = true
-                        }
-                    } else {
-                        handleExportState()
-                    }
+
+                    shareItems = [
+                        EmailShareItemSource(
+                            subject: viewModel.emailSubject,
+                            body: viewModel.emailBody
+                        ),
+                        fileURL
+                    ]
+                    showShareSheet = true
                 }
                 .disabled(viewModel.records.isEmpty)
             }
@@ -144,6 +148,9 @@ struct ReportView: View {
                             .font(.headline)
                         Text(exportedFileName)
                             .foregroundStyle(.secondary)
+                        Text(L10n.tr("report_export_saved_hint"))
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
                     }
                 }
             }
@@ -152,31 +159,12 @@ struct ReportView: View {
         .onAppear {
             viewModel.reload()
         }
-        .onReceive(repository.$records) { _ in
-            viewModel.reload()
-        }
         .sheet(isPresented: $showShareSheet) {
-            if let fileURL = shareAttachmentURL {
-                ShareSheet(items: [fileURL])
-            }
-        }
-        .sheet(isPresented: $showMailComposer) {
-            if let fileURL = mailAttachmentURL {
-                MailComposer(
-                    subject: viewModel.emailSubject,
-                    body: viewModel.emailBody,
-                    attachmentURL: fileURL
-                )
-            }
+            ShareSheet(items: shareItems)
         }
         .onChange(of: showShareSheet) { isPresented in
             if !isPresented {
-                shareAttachmentURL = nil
-            }
-        }
-        .onChange(of: showMailComposer) { isPresented in
-            if !isPresented {
-                mailAttachmentURL = nil
+                shareItems = []
             }
         }
         .alert(item: $exportAlert) { payload in
@@ -196,21 +184,6 @@ struct ReportView: View {
         }
     }
 
-    private func statusColor(for status: BloodPressureStatus) -> Color {
-        switch status {
-        case .normal:
-            return .green
-        case .systolicHigh:
-            return .red
-        case .diastolicHigh:
-            return .orange
-        case .bothHigh:
-            return .red.opacity(0.85)
-        case .variability:
-            return .purple
-        }
-    }
-
     private func handleExportState() {
         if let key = viewModel.exportStatusMessageKey {
             exportAlert = ExportAlert(
@@ -219,5 +192,19 @@ struct ReportView: View {
             )
             viewModel.clearExportMessage()
         }
+    }
+
+    private func prepareExportedPDF() -> URL? {
+        viewModel.exportPDF()
+        handleExportState()
+        return viewModel.exportedFileURL
+    }
+
+    private func exportAndPresentShareSheet() {
+        guard let fileURL = prepareExportedPDF() else {
+            return
+        }
+        shareItems = [fileURL]
+        showShareSheet = true
     }
 }

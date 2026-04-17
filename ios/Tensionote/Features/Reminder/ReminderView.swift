@@ -3,6 +3,7 @@ import SwiftUI
 
 struct ReminderView: View {
     @StateObject private var viewModel = ReminderViewModel()
+    @State private var reminderPendingDeletion: ReminderItem?
 
     var body: some View {
         List {
@@ -48,6 +49,24 @@ struct ReminderView: View {
             }
         }
         .listStyle(.plain)
+        .alert(
+            L10n.tr("reminder_delete_confirm_title"),
+            isPresented: Binding(
+                get: { reminderPendingDeletion != nil },
+                set: { if !$0 { reminderPendingDeletion = nil } }
+            ),
+            presenting: reminderPendingDeletion
+        ) { reminder in
+            Button(L10n.tr("common_cancel"), role: .cancel) {
+                reminderPendingDeletion = nil
+            }
+            Button(L10n.tr("common_delete"), role: .destructive) {
+                viewModel.deleteReminder(reminder.id)
+                reminderPendingDeletion = nil
+            }
+        } message: { _ in
+            Text(L10n.tr("reminder_delete_confirm_body"))
+        }
         .toolbar {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(L10n.tr("reminder_add")) {
@@ -86,12 +105,14 @@ struct ReminderView: View {
             .datePickerStyle(.wheel)
             .frame(maxWidth: .infinity, alignment: .leading)
 
-            Button(role: .destructive) {
-                viewModel.deleteReminder(reminder.id)
+            Button {
+                reminderPendingDeletion = reminder
             } label: {
                 Text(L10n.tr("common_delete"))
-                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            .buttonStyle(.borderless)
+            .tint(.red)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(16)
         .background(

@@ -75,7 +75,8 @@ struct RecordDetailView: View {
     }
 
     private var metricSummaryRow: some View {
-        ViewThatFits(in: .horizontal) {
+        let category = currentRecord.regionalCategory
+        return ViewThatFits(in: .horizontal) {
             HStack(alignment: .firstTextBaseline, spacing: 12) {
                 VStack(alignment: .leading, spacing: 4) {
                     Text(L10n.tr("metric_systolic"))
@@ -107,9 +108,10 @@ struct RecordDetailView: View {
                     Text(L10n.tr("record_status_preview"))
                         .font(.footnote)
                         .foregroundStyle(.secondary)
-                    Text(L10n.tr(currentRecord.status.localizationKey))
+                    Text(L10n.tr(category.localizationKey))
                         .font(.headline)
                         .multilineTextAlignment(.trailing)
+                        .foregroundStyle(category.tintColor)
                 }
             }
 
@@ -117,9 +119,20 @@ struct RecordDetailView: View {
                 labeledMetric(titleKey: "metric_systolic", value: "\(currentRecord.systolic)")
                 labeledMetric(titleKey: "metric_diastolic", value: "\(currentRecord.diastolic)")
                 labeledMetric(titleKey: "metric_heart_rate", value: "\(currentRecord.heartRate)")
-                labeledMetric(titleKey: "record_status_preview", value: L10n.tr(currentRecord.status.localizationKey))
+                labeledMetric(titleKey: "record_status_preview", value: L10n.tr(category.localizationKey), tintColor: category.tintColor)
             }
         }
+        .padding(.vertical, 8)
+        .padding(.leading, 14)
+        .padding(.trailing, 8)
+        .background(category.backgroundColor)
+        .overlay(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 4, style: .continuous)
+                .fill(category.tintColor)
+                .frame(width: 6)
+                .padding(.vertical, 6)
+        }
+        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
     }
 
     private var repositoryPublisher: AnyPublisher<[BloodPressureRecord], Never> {
@@ -157,7 +170,7 @@ struct RecordDetailView: View {
         }
     }
 
-    private func labeledMetric(titleKey: String, value: String) -> some View {
+    private func labeledMetric(titleKey: String, value: String, tintColor: Color = .primary) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(L10n.tr(titleKey))
                 .font(.footnote)
@@ -165,7 +178,7 @@ struct RecordDetailView: View {
             Text(value)
                 .font(titleKey == "record_status_preview" ? .headline : .title3.weight(.semibold))
                 .multilineTextAlignment(.leading)
-                .foregroundStyle(titleKey == "record_status_preview" ? .primary : .primary)
+                .foregroundStyle(titleKey == "record_status_preview" ? tintColor : .primary)
                 .fixedSize(horizontal: false, vertical: true)
         }
     }

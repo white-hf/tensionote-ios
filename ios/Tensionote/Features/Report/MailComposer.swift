@@ -4,20 +4,21 @@ import SwiftUI
 struct MailComposer: UIViewControllerRepresentable {
     let subject: String
     let body: String
-    let attachmentURL: URL
+    let attachmentData: Data
+    let attachmentFileName: String
 
     func makeCoordinator() -> Coordinator {
         Coordinator()
     }
 
     func makeUIViewController(context: Context) -> MFMailComposeViewController {
+        let attachmentData = self.attachmentData
+        let attachmentFileName = self.attachmentFileName
         let controller = MFMailComposeViewController()
         controller.mailComposeDelegate = context.coordinator
         controller.setSubject(subject)
         controller.setMessageBody(body, isHTML: false)
-        if let data = try? Data(contentsOf: attachmentURL) {
-            controller.addAttachmentData(data, mimeType: "application/pdf", fileName: attachmentURL.lastPathComponent)
-        }
+        controller.addAttachmentData(attachmentData, mimeType: "application/pdf", fileName: attachmentFileName)
         return controller
     }
 

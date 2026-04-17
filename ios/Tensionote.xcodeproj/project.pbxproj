@@ -1,0 +1,569 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0AAB791D093EC44918777CCB /* PDFReportExporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2A5B2273C77B1732A7398A /* PDFReportExporter.swift */; };
+		10724DA41F89EBBEF908B671 /* ReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF257E72E247D172F5F646B6 /* ReminderView.swift */; };
+		15720098CC6FED2E236DF52B /* ReminderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F7DDC7D6C1200C785ECF /* ReminderItem.swift */; };
+		19CC675558C34A63F1D45707 /* BloodPressureRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481F8DEDDEFEB73F0E598A1C /* BloodPressureRecord.swift */; };
+		1AD93FBEF1846EAB33A39694 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = B959E51158B8F638494BD1D0 /* ShareSheet.swift */; };
+		1E161146BF1A6C3AD49B5844 /* MailComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE839C9E0FA2BDECFD1EED6 /* MailComposer.swift */; };
+		20051569A9865A183036C7BD /* BloodPressureStatusEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0FB8F927776569B955FC1F2 /* BloodPressureStatusEvaluator.swift */; };
+		239ED0C0C3F9C7762F4AAA3D /* ReminderNotificationScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F2F4FD3B1E7C9032ABD9EC /* ReminderNotificationScheduler.swift */; };
+		465F5DF52AE92359FED4244F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D51D7853EB5AB2A8B6E73C75 /* SettingsView.swift */; };
+		4C017A555ECB6AFE423783E7 /* RegionalBloodPressureEvaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C1B0985C90D0B957E8384B /* RegionalBloodPressureEvaluator.swift */; };
+		4F9B42B82A8EDFA13424FF65 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9EAD4AF0E66DDC02EFEBE6 /* HomeViewModel.swift */; };
+		503B02C1BEC83190518CE8A0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14A3BA86E4A4FA0F09FA2A83 /* HomeView.swift */; };
+		52788D222A872E5D44A6F820 /* RecordDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908DDE249D4536E8E649DF1A /* RecordDetailView.swift */; };
+		60262C2405E26A18D3306795 /* TagLocalization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB1B5856BDB098124F3F261 /* TagLocalization.swift */; };
+		646F665FACFB5538D7D27A11 /* EditRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34A9D31D265A5BC9D438090 /* EditRecordView.swift */; };
+		66CD4034635FBD0B8EC75B35 /* ReportViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC5AF0D33A28995C4B698FE7 /* ReportViewModel.swift */; };
+		686FA1E5FBC64FB2F50B90C7 /* ReportSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7634CE6B5F0BE3F752CD1DAB /* ReportSummary.swift */; };
+		78EF91CE31DEEB65DEC36894 /* DocumentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA121864225768787F47060C /* DocumentView.swift */; };
+		A50F3E7D24DB70E6A8DB98E6 /* TensionoteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29264F0BA6B7C21DC95AD0F8 /* TensionoteApp.swift */; };
+		A7FC0D7830EEECC67D7B8C29 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 525E94896E1A7B3EE23068F6 /* HistoryView.swift */; };
+		B3D693A50BCE398013195070 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FC517E7BEFA40340375E9F0 /* ReportView.swift */; };
+		B426B6648225ACF2E64F996E /* TrendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CEA612906CB6DA5A18F762 /* TrendView.swift */; };
+		C039ABE949F3E91071D2D37E /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCBB0A4827551CDE664D1A38 /* L10n.swift */; };
+		C83DD4E2E88A63CA05C64C3D /* BloodPressureRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF28000CE2BA2FD867A4F4A7 /* BloodPressureRepository.swift */; };
+		D0D5A40A401B5FD13A336CC2 /* ReportSummaryBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0228631A32E4B557BD9432C0 /* ReportSummaryBuilder.swift */; };
+		E066C2865EEDD9422D1FECDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E56F074E16E5352EDAAD7C5D /* Assets.xcassets */; };
+		E634C8B01BB75B4B89D51B30 /* RecordInputValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C511F7B6C3A7E39240BDD41 /* RecordInputValidator.swift */; };
+		E87364A55F1450F69AE86879 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A04E99D6AC16A34A57B7A975 /* Localizable.strings */; };
+		F847EEA997E31A429C7B6DC5 /* ReminderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E291A64C19652EEABC4A3EBF /* ReminderViewModel.swift */; };
+		FC3CCA8BA753A980FAD59380 /* DetailedRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9652DD375290C64BCEE6EF /* DetailedRecordView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0228631A32E4B557BD9432C0 /* ReportSummaryBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSummaryBuilder.swift; sourceTree = "<group>"; };
+		07F2F4FD3B1E7C9032ABD9EC /* ReminderNotificationScheduler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderNotificationScheduler.swift; sourceTree = "<group>"; };
+		0A9EAD4AF0E66DDC02EFEBE6 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		14A3BA86E4A4FA0F09FA2A83 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		1EB1B5856BDB098124F3F261 /* TagLocalization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagLocalization.swift; sourceTree = "<group>"; };
+		29264F0BA6B7C21DC95AD0F8 /* TensionoteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TensionoteApp.swift; sourceTree = "<group>"; };
+		2FC517E7BEFA40340375E9F0 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		35C1B0985C90D0B957E8384B /* RegionalBloodPressureEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionalBloodPressureEvaluator.swift; sourceTree = "<group>"; };
+		481F8DEDDEFEB73F0E598A1C /* BloodPressureRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureRecord.swift; sourceTree = "<group>"; };
+		525E94896E1A7B3EE23068F6 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		5C511F7B6C3A7E39240BDD41 /* RecordInputValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordInputValidator.swift; sourceTree = "<group>"; };
+		5EE839C9E0FA2BDECFD1EED6 /* MailComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposer.swift; sourceTree = "<group>"; };
+		64F1F7DDC7D6C1200C785ECF /* ReminderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderItem.swift; sourceTree = "<group>"; };
+		6A4FE9096A2642541514BA69 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		70631368DA39B4E6C47961E9 /* Tensionote.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Tensionote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7634CE6B5F0BE3F752CD1DAB /* ReportSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportSummary.swift; sourceTree = "<group>"; };
+		8AD59B6F64FE87B132718F6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8D9652DD375290C64BCEE6EF /* DetailedRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedRecordView.swift; sourceTree = "<group>"; };
+		908DDE249D4536E8E649DF1A /* RecordDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDetailView.swift; sourceTree = "<group>"; };
+		AF28000CE2BA2FD867A4F4A7 /* BloodPressureRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureRepository.swift; sourceTree = "<group>"; };
+		B4E124148E3D2C1F6CA6D5F1 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B959E51158B8F638494BD1D0 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
+		B9CEA612906CB6DA5A18F762 /* TrendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendView.swift; sourceTree = "<group>"; };
+		BF257E72E247D172F5F646B6 /* ReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderView.swift; sourceTree = "<group>"; };
+		C34A9D31D265A5BC9D438090 /* EditRecordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecordView.swift; sourceTree = "<group>"; };
+		CCB2AC7988ED35ED83265197 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		D51D7853EB5AB2A8B6E73C75 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DA121864225768787F47060C /* DocumentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentView.swift; sourceTree = "<group>"; };
+		DCBB0A4827551CDE664D1A38 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
+		E291A64C19652EEABC4A3EBF /* ReminderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReminderViewModel.swift; sourceTree = "<group>"; };
+		E56F074E16E5352EDAAD7C5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F0FB8F927776569B955FC1F2 /* BloodPressureStatusEvaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureStatusEvaluator.swift; sourceTree = "<group>"; };
+		FC5AF0D33A28995C4B698FE7 /* ReportViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewModel.swift; sourceTree = "<group>"; };
+		FF2A5B2273C77B1732A7398A /* PDFReportExporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFReportExporter.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		15E6A5D52210356BC9BF07A2 /* Tensionote */ = {
+			isa = PBXGroup;
+			children = (
+				6A4FE9096A2642541514BA69 /* Info.plist */,
+				3DED1E6A8DCF1DA098D0B1D9 /* App */,
+				96946ED3940960B9B965FF0B /* Core */,
+				6C550C2BB6658CBFED8C936F /* Features */,
+				FC9A8488C26CEB8F29187BA4 /* Resources */,
+			);
+			path = Tensionote;
+			sourceTree = "<group>";
+		};
+		1A7F5EF0800CDA49B3B66CC5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DA121864225768787F47060C /* DocumentView.swift */,
+				D51D7853EB5AB2A8B6E73C75 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		2AB9BD0EBA47AC0ACAFCC1B2 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				AF28000CE2BA2FD867A4F4A7 /* BloodPressureRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		37706DCCA5F96954384BAD55 /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				B9CEA612906CB6DA5A18F762 /* TrendView.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		3CA92651A4BC91100BF9212B /* Reminder */ = {
+			isa = PBXGroup;
+			children = (
+				BF257E72E247D172F5F646B6 /* ReminderView.swift */,
+				E291A64C19652EEABC4A3EBF /* ReminderViewModel.swift */,
+			);
+			path = Reminder;
+			sourceTree = "<group>";
+		};
+		3DED1E6A8DCF1DA098D0B1D9 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				29264F0BA6B7C21DC95AD0F8 /* TensionoteApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		43531770B64EF5EB76990FB2 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				8D9652DD375290C64BCEE6EF /* DetailedRecordView.swift */,
+				C34A9D31D265A5BC9D438090 /* EditRecordView.swift */,
+				908DDE249D4536E8E649DF1A /* RecordDetailView.swift */,
+			);
+			path = Record;
+			sourceTree = "<group>";
+		};
+		509389D850FF8E139B995086 = {
+			isa = PBXGroup;
+			children = (
+				15E6A5D52210356BC9BF07A2 /* Tensionote */,
+				EE40234C2D0B0173A046C026 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5BDB0CE1EA98DED3561B73AB /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				5EE839C9E0FA2BDECFD1EED6 /* MailComposer.swift */,
+				2FC517E7BEFA40340375E9F0 /* ReportView.swift */,
+				FC5AF0D33A28995C4B698FE7 /* ReportViewModel.swift */,
+				B959E51158B8F638494BD1D0 /* ShareSheet.swift */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
+		6394B46849FD4A47857FB76A /* Export */ = {
+			isa = PBXGroup;
+			children = (
+				FF2A5B2273C77B1732A7398A /* PDFReportExporter.swift */,
+			);
+			path = Export;
+			sourceTree = "<group>";
+		};
+		6ADE08FECE7F9FBA65C42AC7 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				07F2F4FD3B1E7C9032ABD9EC /* ReminderNotificationScheduler.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		6C550C2BB6658CBFED8C936F /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				FBB6E4D0957E8EFD737CC329 /* History */,
+				84E9FA6CEB93851803F54459 /* Home */,
+				43531770B64EF5EB76990FB2 /* Record */,
+				3CA92651A4BC91100BF9212B /* Reminder */,
+				5BDB0CE1EA98DED3561B73AB /* Report */,
+				1A7F5EF0800CDA49B3B66CC5 /* Settings */,
+				37706DCCA5F96954384BAD55 /* Trend */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		84E9FA6CEB93851803F54459 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				14A3BA86E4A4FA0F09FA2A83 /* HomeView.swift */,
+				0A9EAD4AF0E66DDC02EFEBE6 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		96946ED3940960B9B965FF0B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				6394B46849FD4A47857FB76A /* Export */,
+				F741B6D6C77CB4FB6EDEA80B /* Localization */,
+				F9EB342BB1055E824742F0E8 /* Models */,
+				6ADE08FECE7F9FBA65C42AC7 /* Notifications */,
+				2AB9BD0EBA47AC0ACAFCC1B2 /* Repository */,
+				C3A122AF117460B0F8AAA08F /* Rules */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C3A122AF117460B0F8AAA08F /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				F0FB8F927776569B955FC1F2 /* BloodPressureStatusEvaluator.swift */,
+				5C511F7B6C3A7E39240BDD41 /* RecordInputValidator.swift */,
+				35C1B0985C90D0B957E8384B /* RegionalBloodPressureEvaluator.swift */,
+				0228631A32E4B557BD9432C0 /* ReportSummaryBuilder.swift */,
+			);
+			path = Rules;
+			sourceTree = "<group>";
+		};
+		EE40234C2D0B0173A046C026 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				70631368DA39B4E6C47961E9 /* Tensionote.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F741B6D6C77CB4FB6EDEA80B /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				DCBB0A4827551CDE664D1A38 /* L10n.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		F9EB342BB1055E824742F0E8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				481F8DEDDEFEB73F0E598A1C /* BloodPressureRecord.swift */,
+				64F1F7DDC7D6C1200C785ECF /* ReminderItem.swift */,
+				7634CE6B5F0BE3F752CD1DAB /* ReportSummary.swift */,
+				1EB1B5856BDB098124F3F261 /* TagLocalization.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FBB6E4D0957E8EFD737CC329 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				525E94896E1A7B3EE23068F6 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		FC9A8488C26CEB8F29187BA4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				E56F074E16E5352EDAAD7C5D /* Assets.xcassets */,
+				A04E99D6AC16A34A57B7A975 /* Localizable.strings */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EAF63D4DC5F54EE7EF2323F4 /* Tensionote */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 678C9D50A24D4ECD65E01EE3 /* Build configuration list for PBXNativeTarget "Tensionote" */;
+			buildPhases = (
+				92A848847B44CA6C66BA300A /* Sources */,
+				620839C2227A89D675324103 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tensionote;
+			packageProductDependencies = (
+			);
+			productName = Tensionote;
+			productReference = 70631368DA39B4E6C47961E9 /* Tensionote.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A6BCF1E6486EE305404D838 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					EAF63D4DC5F54EE7EF2323F4 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 497A15A0691EBE32E8EB37D2 /* Build configuration list for PBXProject "Tensionote" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+				hi,
+				"zh-Hans",
+			);
+			mainGroup = 509389D850FF8E139B995086;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EAF63D4DC5F54EE7EF2323F4 /* Tensionote */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		620839C2227A89D675324103 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E066C2865EEDD9422D1FECDD /* Assets.xcassets in Resources */,
+				E87364A55F1450F69AE86879 /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		92A848847B44CA6C66BA300A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				19CC675558C34A63F1D45707 /* BloodPressureRecord.swift in Sources */,
+				C83DD4E2E88A63CA05C64C3D /* BloodPressureRepository.swift in Sources */,
+				20051569A9865A183036C7BD /* BloodPressureStatusEvaluator.swift in Sources */,
+				FC3CCA8BA753A980FAD59380 /* DetailedRecordView.swift in Sources */,
+				78EF91CE31DEEB65DEC36894 /* DocumentView.swift in Sources */,
+				646F665FACFB5538D7D27A11 /* EditRecordView.swift in Sources */,
+				A7FC0D7830EEECC67D7B8C29 /* HistoryView.swift in Sources */,
+				503B02C1BEC83190518CE8A0 /* HomeView.swift in Sources */,
+				4F9B42B82A8EDFA13424FF65 /* HomeViewModel.swift in Sources */,
+				C039ABE949F3E91071D2D37E /* L10n.swift in Sources */,
+				1E161146BF1A6C3AD49B5844 /* MailComposer.swift in Sources */,
+				0AAB791D093EC44918777CCB /* PDFReportExporter.swift in Sources */,
+				52788D222A872E5D44A6F820 /* RecordDetailView.swift in Sources */,
+				E634C8B01BB75B4B89D51B30 /* RecordInputValidator.swift in Sources */,
+				4C017A555ECB6AFE423783E7 /* RegionalBloodPressureEvaluator.swift in Sources */,
+				15720098CC6FED2E236DF52B /* ReminderItem.swift in Sources */,
+				239ED0C0C3F9C7762F4AAA3D /* ReminderNotificationScheduler.swift in Sources */,
+				10724DA41F89EBBEF908B671 /* ReminderView.swift in Sources */,
+				F847EEA997E31A429C7B6DC5 /* ReminderViewModel.swift in Sources */,
+				686FA1E5FBC64FB2F50B90C7 /* ReportSummary.swift in Sources */,
+				D0D5A40A401B5FD13A336CC2 /* ReportSummaryBuilder.swift in Sources */,
+				B3D693A50BCE398013195070 /* ReportView.swift in Sources */,
+				66CD4034635FBD0B8EC75B35 /* ReportViewModel.swift in Sources */,
+				465F5DF52AE92359FED4244F /* SettingsView.swift in Sources */,
+				1AD93FBEF1846EAB33A39694 /* ShareSheet.swift in Sources */,
+				60262C2405E26A18D3306795 /* TagLocalization.swift in Sources */,
+				A50F3E7D24DB70E6A8DB98E6 /* TensionoteApp.swift in Sources */,
+				B426B6648225ACF2E64F996E /* TrendView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A04E99D6AC16A34A57B7A975 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AD59B6F64FE87B132718F6D /* en */,
+				B4E124148E3D2C1F6CA6D5F1 /* hi */,
+				CCB2AC7988ED35ED83265197 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2821033BD314468AF52651BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Tensionote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tensionote.app;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2AD6D2D730629B9FFC8E9B53 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		4356AAD4E35893CE7FCDC30B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Tensionote/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tensionote.app;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E2D21810A2DB9EBBDBE78BBD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		497A15A0691EBE32E8EB37D2 /* Build configuration list for PBXProject "Tensionote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E2D21810A2DB9EBBDBE78BBD /* Debug */,
+				2AD6D2D730629B9FFC8E9B53 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		678C9D50A24D4ECD65E01EE3 /* Build configuration list for PBXNativeTarget "Tensionote" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4356AAD4E35893CE7FCDC30B /* Debug */,
+				2821033BD314468AF52651BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A6BCF1E6486EE305404D838 /* Project object */;
+}

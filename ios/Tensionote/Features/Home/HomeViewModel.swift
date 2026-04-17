@@ -19,29 +19,29 @@ final class HomeViewModel: ObservableObject {
         didSet { validationMessageKey = nil }
     }
     @Published private(set) var trendRecords: [BloodPressureRecord] = []
-    @Published private(set) var selectedStatus: BloodPressureStatus = .normal
-    @Published private(set) var draftStatus: BloodPressureStatus?
+    @Published private(set) var selectedCategory: BloodPressureCategory = .normal
+    @Published private(set) var draftCategory: BloodPressureCategory?
     @Published private(set) var validationMessageKey: String?
 
     let repository: BloodPressureRepository
-    private let evaluator: BloodPressureStatusEvaluator
+    private let evaluator: RegionalBloodPressureEvaluator
     private let validator = RecordInputValidator()
 
-    init(repository: BloodPressureRepository, evaluator: BloodPressureStatusEvaluator) {
+    init(repository: BloodPressureRepository, evaluator: RegionalBloodPressureEvaluator) {
         self.repository = repository
         self.evaluator = evaluator
         reload()
         if let latest = trendRecords.last {
-            selectedStatus = latest.status
+            selectedCategory = latest.regionalCategory
         }
     }
 
     func reload() {
         trendRecords = repository.fetchRecentTwoWeeks()
         if let latest = trendRecords.last {
-            selectedStatus = latest.status
+            selectedCategory = latest.regionalCategory
         } else {
-            selectedStatus = .normal
+            selectedCategory = .normal
         }
     }
 
@@ -67,17 +67,17 @@ final class HomeViewModel: ObservableObject {
         )
         clearInputs()
         reload()
-        selectedStatus = record.status
-        draftStatus = nil
+        selectedCategory = record.regionalCategory
+        draftCategory = nil
         validationMessageKey = nil
     }
 
     func selectRecord(_ record: BloodPressureRecord) {
-        selectedStatus = record.status
+        selectedCategory = record.regionalCategory
     }
 
-    var displayStatus: BloodPressureStatus {
-        draftStatus ?? selectedStatus
+    var displayCategory: BloodPressureCategory {
+        draftCategory ?? selectedCategory
     }
 
     var canSaveQuickRecord: Bool {
@@ -109,9 +109,9 @@ final class HomeViewModel: ObservableObject {
             let systolic = Int(systolicInput),
             let diastolic = Int(diastolicInput)
         else {
-            draftStatus = nil
+            draftCategory = nil
             return
         }
-        draftStatus = evaluator.evaluate(systolic: systolic, diastolic: diastolic)
+        draftCategory = evaluator.evaluate(systolic: systolic, diastolic: diastolic)
     }
 }

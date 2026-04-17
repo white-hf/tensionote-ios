@@ -3,7 +3,9 @@
 "home_detailed_entry_button" = "विस्तृत प्रविष्टि";
 "common_save_now" = "अभी सहेजें";
 "common_back" = "वापस";
+"common_done" = "पूर्ण";
 "common_delete" = "हटाएँ";
+"common_cancel" = "रद्द करें";
 "common_number_placeholder" = "0";
 
 "home_recent_two_weeks_trend" = "पिछले 2 सप्ताह की प्रवृत्ति";
@@ -40,6 +42,8 @@
 "reminder_title" = "रिमाइंडर";
 "reminder_every_day" = "हर दिन";
 "reminder_add" = "जोड़ें";
+"reminder_delete_confirm_title" = "क्या इस रिमाइंडर को हटाना है?";
+"reminder_delete_confirm_body" = "जारी रखने पर यह रिमाइंडर हटा दिया जाएगा।";
 "reminder_empty_title" = "अभी कोई रिमाइंडर नहीं है";
 "reminder_empty_body" = "रिमाइंडर जोड़ें ताकि रक्तचाप मापने के समय आपको सूचना मिले।";
 "reminder_notification_status_title" = "सूचना स्थिति";
@@ -81,6 +85,7 @@
 "report_export_pdf" = "PDF निर्यात करें";
 "report_share_email" = "ईमेल से साझा करें";
 "report_export_result_prefix" = "फ़ाइल बनाई गई:";
+"report_export_saved_hint" = "सिस्टम शेयर शीट खुल गई है। इसे Files में सहेजें या किसी अन्य ऐप में भेजें।";
 "report_email_subject_format" = "Tensionote रक्तचाप रिपोर्ट (%d दिन)";
 "report_email_body_format" = "संलग्नक में Tensionote से निर्यात की गई रक्तचाप रिपोर्ट है।\n\nअवधि: %d दिन\nरिकॉर्ड: %d\nऔसत: %d / %d\nऔसत हृदय गति: %d";
 
@@ -101,6 +106,7 @@
 "chart_axis_date" = "तारीख";
 "chart_axis_systolic" = "सिस्टोलिक";
 "chart_axis_diastolic" = "डायस्टोलिक";
+"trend_chart_legend_thresholds" = "वर्तमान क्षेत्रीय उच्च रक्तचाप सीमा: सिस्टोलिक %d, डायस्टोलिक %d।";
 "trend_summary_normal" = "हाल के सभी रिकॉर्ड सामान्य सीमा में हैं।";
 "trend_summary_counts" = "चयनित प्रवृत्ति में सिस्टोलिक %d बार और डायस्टोलिक %d बार ऊँचा था।";
 "trend_chart_legend" = "लाल रेखा सिस्टोलिक ऊँचे स्तर की सीमा दिखाती है, नारंगी रेखा डायस्टोलिक ऊँचे स्तर की सीमा दिखाती है।";
@@ -116,13 +122,22 @@
 "validation_enter_valid_numbers" = "कृपया मान्य संख्याएँ दर्ज करें।";
 "validation_out_of_range" = "कृपया मान्य सीमा के भीतर मान दर्ज करें।";
 
+"blood_pressure_category_normal" = "सामान्य";
+"blood_pressure_category_high_normal" = "उच्च-सामान्य";
+"blood_pressure_category_elevated" = "रक्तचाप बढ़ा हुआ";
+"blood_pressure_category_stage_1_hypertension" = "स्टेज 1 उच्च रक्तचाप";
+"blood_pressure_category_stage_2_hypertension" = "स्टेज 2 उच्च रक्तचाप";
+"blood_pressure_category_hypertension" = "उच्च रक्तचाप";
+"blood_pressure_category_grade_1_hypertension" = "ग्रेड 1 उच्च रक्तचाप";
+"blood_pressure_category_grade_2_hypertension" = "ग्रेड 2 उच्च रक्तचाप";
+"blood_pressure_category_grade_3_hypertension" = "ग्रेड 3 उच्च रक्तचाप";
+"blood_pressure_category_severe_hypertension" = "गंभीर उच्च रक्तचाप";
+"blood_pressure_category_hypertensive_crisis" = "हाइपरटेंसिव क्राइसिस";
+
 "blood_pressure_status_normal" = "यह रीडिंग सामान्य सीमा में है।";
 "blood_pressure_status_systolic_high" = "सिस्टोलिक दबाव ऊँचा है।";
 "blood_pressure_status_diastolic_high" = "डायस्टोलिक दबाव ऊँचा है।";
 "blood_pressure_status_both_high" = "सिस्टोलिक और डायस्टोलिक दबाव ऊँचे हैं।";
 "blood_pressure_status_variability" = "रक्तचाप में हाल में स्पष्ट उतार-चढ़ाव रहा है।";
-
-
-
 
 

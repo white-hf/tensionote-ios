@@ -6,7 +6,11 @@ struct PDFReportExporter {
             return nil
         }
 
-        let outputURL = FileManager.default.temporaryDirectory.appendingPathComponent("tensionote-report-\(days)-\(UUID().uuidString).pdf")
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd-HHmm"
+        let timestamp = formatter.string(from: .now)
+        let outputURL = FileManager.default.temporaryDirectory
+            .appendingPathComponent("Tensionote-Report-\(days)-days-\(timestamp).pdf")
         let renderer = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 595, height: 842))
 
         do {
@@ -27,7 +31,7 @@ struct PDFReportExporter {
 
                 var currentY: CGFloat = 190
                 for record in records.prefix(12) {
-                    let status = L10n.tr(record.status.localizationKey)
+                    let status = L10n.tr(record.regionalCategory.localizationKey)
                     let line = "\(record.measuredAt.formatted(date: .abbreviated, time: .shortened))  \(record.systolic)/\(record.diastolic)  \(record.heartRate)  \(status)"
                     NSString(string: line).draw(at: CGPoint(x: 32, y: currentY), withAttributes: bodyAttributes)
                     currentY += 22

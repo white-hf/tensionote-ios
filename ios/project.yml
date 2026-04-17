@@ -13,6 +13,8 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.tensionote.app
         SWIFT_VERSION: 5.10
         INFOPLIST_FILE: Tensionote/Info.plist
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_IDENTITY: Apple Development
     resources:
       - Tensionote/Resources
     info:
