@@ -127,15 +127,19 @@ struct HomeView: View {
 
                     LineMark(
                         x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
-                        y: .value(L10n.tr("chart_axis_systolic"), record.systolic)
+                        y: .value(L10n.tr("chart_axis_systolic"), record.systolic),
+                        series: .value("Series", "systolic")
                     )
                     .foregroundStyle(.blue)
+                    .interpolationMethod(.catmullRom)
 
                     LineMark(
                         x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
-                        y: .value(L10n.tr("chart_axis_diastolic"), record.diastolic)
+                        y: .value(L10n.tr("chart_axis_diastolic"), record.diastolic),
+                        series: .value("Series", "diastolic")
                     )
                     .foregroundStyle(.teal)
+                    .interpolationMethod(.catmullRom)
 
                     PointMark(
                         x: .value(L10n.tr("chart_axis_date"), record.measuredAt),
@@ -157,8 +161,7 @@ struct HomeView: View {
 
                 Text(
                     L10n.format(
-                        "trend_chart_legend_thresholds",
-                        evaluator.standard.hypertensionSystolicThreshold,
+                        "trend_chart_legend_compact_rule",
                         evaluator.standard.hypertensionDiastolicThreshold
                     )
                 )

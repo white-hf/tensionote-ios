@@ -42,7 +42,7 @@ struct RecordDetailView: View {
         }
         .navigationTitle(L10n.tr("record_detail_title"))
         .toolbar {
-            if let repository {
+            if repository != nil {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(L10n.tr("record_edit_title")) {
                         showEdit = true

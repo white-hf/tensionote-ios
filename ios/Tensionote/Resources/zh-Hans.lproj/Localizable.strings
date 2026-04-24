@@ -107,6 +107,7 @@
 "chart_axis_systolic" = "收缩压";
 "chart_axis_diastolic" = "舒张压";
 "trend_chart_legend_thresholds" = "当前区域高血压阈值：收缩压 %d，舒张压 %d。";
+"trend_chart_legend_compact_rule" = "红色阈值线表示收缩压阈值，高于 %1$d 视为偏高；橙色阈值线表示舒张压阈值，高于 %2$d 视为偏高。";
 "trend_summary_normal" = "最近记录都处于常见正常范围。";
 "trend_summary_counts" = "当前趋势中，收缩压偏高 %d 次，舒张压偏高 %d 次。";
 "trend_chart_legend" = "红线表示收缩压偏高阈值，橙线表示舒张压偏高阈值。";
@@ -139,4 +140,3 @@
 "blood_pressure_status_diastolic_high" = "舒张压偏高。";
 "blood_pressure_status_both_high" = "收缩压和舒张压偏高。";
 "blood_pressure_status_variability" = "最近血压波动较明显。";
-

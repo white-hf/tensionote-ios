@@ -107,6 +107,7 @@
 "chart_axis_systolic" = "Systolic";
 "chart_axis_diastolic" = "Diastolic";
 "trend_chart_legend_thresholds" = "Regional hypertension thresholds: systolic %d, diastolic %d.";
+"trend_chart_legend_compact_rule" = "The red threshold line marks the systolic threshold. Values above %1$d are considered high; the orange threshold line marks the diastolic threshold. Values above %2$d are considered high.";
 "trend_summary_normal" = "Recent records are all within the common normal range.";
 "trend_summary_counts" = "In the selected trend, systolic was high %d times and diastolic was high %d times.";
 "trend_chart_legend" = "Red line: systolic high threshold. Orange line: diastolic high threshold.";
@@ -139,4 +140,3 @@
 "blood_pressure_status_diastolic_high" = "Diastolic pressure is high.";
 "blood_pressure_status_both_high" = "Systolic and diastolic pressure are high.";
 "blood_pressure_status_variability" = "Blood pressure has been fluctuating noticeably.";
-
