@@ -2,6 +2,12 @@
 "home_quick_entry_title" = "Quick Entry";
 "home_detailed_entry_button" = "Detailed Entry";
 "common_save_now" = "Save Now";
+"common_save_success" = "Saved successfully";
+"feedback_first_record" = "First record saved! Keep recording to see your health trend.";
+"feedback_normal" = "Perfect! Keep up your healthy lifestyle.";
+"feedback_stable_high" = "Your readings are stable. Consistent recording is key to management.";
+"feedback_improving" = "Great! This reading is lower than your recent average.";
+"feedback_sudden_high" = "This is higher than your usual levels. Try to rest and re-measure.";
 "common_back" = "Back";
 "common_done" = "Done";
 "common_delete" = "Delete";

@@ -77,15 +77,30 @@ struct HomeView: View {
             metricField(titleKey: "metric_heart_rate", text: $viewModel.heartRateInput)
 
             Button(action: viewModel.saveQuickRecord) {
-                Text(L10n.tr("common_save_now"))
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
+                Group {
+                    if viewModel.showSaveSuccess {
+                        Label(L10n.tr("common_save_success"), systemImage: "checkmark.circle.fill")
+                    } else {
+                        Text(L10n.tr("common_save_now"))
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
             }
             .buttonStyle(.borderedProminent)
-            .disabled(!viewModel.canSaveQuickRecord)
+            .tint(viewModel.showSaveSuccess ? .green : .accentColor)
+            .disabled(!viewModel.canSaveQuickRecord && !viewModel.showSaveSuccess)
+            .sensoryFeedback(.success, trigger: viewModel.showSaveSuccess)
             .simultaneousGesture(TapGesture().onEnded {
                 focusedField = nil
             })
+
+            if let feedbackKey = viewModel.feedbackMessageKey {
+                Text(L10n.tr(feedbackKey))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+                    .transition(.opacity.combined(with: .move(edge: .top)))
+            }
 
             if let validationMessageKey = viewModel.validationMessageKey {
                 Text(L10n.tr(validationMessageKey))

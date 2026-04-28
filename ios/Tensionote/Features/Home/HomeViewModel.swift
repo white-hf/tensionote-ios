@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import SwiftUI
 
 @MainActor
 final class HomeViewModel: ObservableObject {
@@ -22,6 +23,8 @@ final class HomeViewModel: ObservableObject {
     @Published private(set) var selectedCategory: BloodPressureCategory = .normal
     @Published private(set) var draftCategory: BloodPressureCategory?
     @Published private(set) var validationMessageKey: String?
+    @Published var showSaveSuccess = false
+    @Published private(set) var feedbackMessageKey: String?
 
     let repository: BloodPressureRepository
     private let evaluator: RegionalBloodPressureEvaluator
@@ -37,11 +40,13 @@ final class HomeViewModel: ObservableObject {
     }
 
     func reload() {
-        trendRecords = repository.fetchRecentTwoWeeks()
-        if let latest = trendRecords.last {
-            selectedCategory = latest.regionalCategory
-        } else {
-            selectedCategory = .normal
+        withAnimation(.spring()) {
+            trendRecords = repository.fetchRecentTwoWeeks()
+            if let latest = trendRecords.last {
+                selectedCategory = latest.regionalCategory
+            } else {
+                selectedCategory = .normal
+            }
         }
     }
 
@@ -60,16 +65,54 @@ final class HomeViewModel: ObservableObject {
             return
         }
 
+        let baseline = trendRecords
         let record = repository.saveQuickRecord(
             systolic: systolic,
             diastolic: diastolic,
             heartRate: heartRate
         )
-        clearInputs()
-        reload()
-        selectedCategory = record.regionalCategory
-        draftCategory = nil
-        validationMessageKey = nil
+        
+        feedbackMessageKey = generateFeedback(for: record, baseline: baseline)
+
+        withAnimation(.spring()) {
+            clearInputs()
+            reload()
+            selectedCategory = record.regionalCategory
+            draftCategory = nil
+            validationMessageKey = nil
+            showSaveSuccess = true
+        }
+
+        // Auto-hide success message after 4 seconds to give time to read feedback
+        Task {
+            try? await Task.sleep(nanoseconds: 4_000_000_000)
+            withAnimation {
+                showSaveSuccess = false
+                feedbackMessageKey = nil
+            }
+        }
+    }
+
+    private func generateFeedback(for record: BloodPressureRecord, baseline: [BloodPressureRecord]) -> String {
+        if baseline.isEmpty {
+            return "feedback_first_record"
+        }
+        
+        let avgSystolic = baseline.map { Double($0.systolic) }.reduce(0, +) / Double(baseline.count)
+        
+        if Double(record.systolic) > avgSystolic + 12 {
+            return "feedback_sudden_high"
+        }
+        
+        if Double(record.systolic) < avgSystolic - 8 {
+            return "feedback_improving"
+        }
+        
+        if record.regionalCategory == .normal {
+            return "feedback_normal"
+        }
+        
+        return "feedback_stable_high"
     }
 
     func selectRecord(_ record: BloodPressureRecord) {

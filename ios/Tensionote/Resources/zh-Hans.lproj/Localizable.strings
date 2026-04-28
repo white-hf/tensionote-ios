@@ -2,6 +2,12 @@
 "home_quick_entry_title" = "快速录入";
 "home_detailed_entry_button" = "详细录入";
 "common_save_now" = "立即保存";
+"common_save_success" = "保存成功";
+"feedback_first_record" = "第一条记录已存！坚持录入，系统将为你分析趋势。";
+"feedback_normal" = "非常理想！请继续保持健康的生活方式。";
+"feedback_stable_high" = "读数比较稳定。坚持记录和规律生活是管理血压的关键。";
+"feedback_improving" = "太棒了！这次读数比你最近的平均水平有所下降。";
+"feedback_sudden_high" = "数值比平时偏高。建议静坐休息 5 分钟后复测。";
 "common_back" = "返回";
 "common_done" = "完成";
 "common_delete" = "删除";
